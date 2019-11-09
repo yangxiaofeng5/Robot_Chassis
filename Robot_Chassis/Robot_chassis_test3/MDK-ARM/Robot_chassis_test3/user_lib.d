@@ -41,6 +41,7 @@ robot_chassis_test3\user_lib.o: ..\APP\robomaster_vcan\robomaster_vcan.h
 robot_chassis_test3\user_lib.o: ..\Hardware\Bsp-can\bsp_can.h
 robot_chassis_test3\user_lib.o: ../Inc/can.h
 robot_chassis_test3\user_lib.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+robot_chassis_test3\user_lib.o: ../Inc/tim.h
 robot_chassis_test3\user_lib.o: ..\DSB_LIB\Include\arm_math.h
 robot_chassis_test3\user_lib.o: ../Drivers/CMSIS/Include/core_cm4.h
 robot_chassis_test3\user_lib.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h

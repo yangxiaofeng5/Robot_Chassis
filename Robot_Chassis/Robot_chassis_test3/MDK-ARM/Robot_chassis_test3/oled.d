@@ -42,6 +42,7 @@ robot_chassis_test3\oled.o: ..\APP\robomaster_vcan\robomaster_vcan.h
 robot_chassis_test3\oled.o: ..\Hardware\Bsp-can\bsp_can.h
 robot_chassis_test3\oled.o: ../Inc/can.h
 robot_chassis_test3\oled.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+robot_chassis_test3\oled.o: ../Inc/tim.h
 robot_chassis_test3\oled.o: ..\Hardware\oled\oledfont.h
 robot_chassis_test3\oled.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
 robot_chassis_test3\oled.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h

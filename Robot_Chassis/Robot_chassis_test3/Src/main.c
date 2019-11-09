@@ -102,6 +102,7 @@ int main(void)
   MX_USART6_UART_Init();
   MX_SPI5_Init();
   MX_TIM3_Init();
+  MX_TIM4_Init();
   /* USER CODE BEGIN 2 */
 	can_user_init(&hcan1);															//can设备准备好
 	HAL_UART_Receive_IT_IDLE(&huart1,UART_Buffer,100);   //启动串口接收

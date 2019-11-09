@@ -336,7 +336,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER,STM32F427xx,USE_HAL_DRIVER,USE_STDPERIPH_DRIVER,ARM_MATH_CM4,__CC_ARM,ARM_MATH_M,_GUNC_</Define>
               <Undefine></Undefine>
-              <IncludePath>../Inc;  ../Drivers/STM32F4xx_HAL_Driver/Inc;  ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy;  ../Middlewares/Third_Party/FreeRTOS/Source/include;  ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS;  ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F;  ../Drivers/CMSIS/Device/ST/STM32F4xx/Include;  ../Drivers/CMSIS/Include;  ..\APP\User_lib;  ..\APP\robomaster_vcan;  ..\APP\chassis_behaviour;  ..\Hardware\Bsp-can;  ..\Hardware\DJI_Remote;  ..\Hardware\oled;  ..\Hardware\IMU;  ..\Task\Initial_Task;  ..\Task\Chassis_Task;  ..\Task\Gimbal_Task;  ..\Task\Revolver_Task;  ..\DSB_LIB;  ..\DSB_LIB\Include;  ..\Drivers\CMSIS\Lib\ARM</IncludePath>
+              <IncludePath>../Inc;../Drivers/STM32F4xx_HAL_Driver/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy;../Middlewares/Third_Party/FreeRTOS/Source/include;../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS;../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F;../Drivers/CMSIS/Device/ST/STM32F4xx/Include;../Drivers/CMSIS/Include;..\APP\User_lib;..\APP\robomaster_vcan;..\APP\chassis_behaviour;..\Hardware\Bsp-can;..\Hardware\DJI_Remote;..\Hardware\oled;..\Hardware\IMU;..\Task\Initial_Task;..\Task\Chassis_Task;..\Task\Gimbal_Task;..\Task\Revolver_Task;..\Task\Test_Task;..\DSB_LIB;..\DSB_LIB\Include;..\Drivers\CMSIS\Lib\ARM</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -651,9 +651,14 @@
               <FilePath>..\Task\Revolver_Task\Revolver_Task.c</FilePath>
             </File>
             <File>
-              <FileName>Revolver_Task.h</FileName>
+              <FileName>Test_Task.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Task\Test_Task\Test_Task.c</FilePath>
+            </File>
+            <File>
+              <FileName>Test_Task.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\Task\Revolver_Task\Revolver_Task.h</FilePath>
+              <FilePath>..\Task\Test_Task\Test_Task.h</FilePath>
             </File>
           </Files>
         </Group>

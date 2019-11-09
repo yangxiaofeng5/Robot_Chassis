@@ -40,6 +40,7 @@ robot_chassis_test3\dji_remote.o: ..\Hardware\Bsp-can\bsp_can.h
 robot_chassis_test3\dji_remote.o: ../Inc/can.h
 robot_chassis_test3\dji_remote.o: ../Inc/main.h
 robot_chassis_test3\dji_remote.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+robot_chassis_test3\dji_remote.o: ../Inc/tim.h
 robot_chassis_test3\dji_remote.o: ../Inc/usart.h
 robot_chassis_test3\dji_remote.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
 robot_chassis_test3\dji_remote.o: ../Inc/FreeRTOSConfig.h

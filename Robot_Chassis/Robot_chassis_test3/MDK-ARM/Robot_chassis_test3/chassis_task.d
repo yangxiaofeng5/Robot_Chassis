@@ -55,6 +55,7 @@ robot_chassis_test3\chassis_task.o: ..\Hardware\Bsp-can\bsp_can.h
 robot_chassis_test3\chassis_task.o: ../Inc/can.h
 robot_chassis_test3\chassis_task.o: ../Inc/main.h
 robot_chassis_test3\chassis_task.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+robot_chassis_test3\chassis_task.o: ../Inc/tim.h
 robot_chassis_test3\chassis_task.o: ../Inc/usart.h
 robot_chassis_test3\chassis_task.o: ..\Hardware\Bsp-can\pid.h
 robot_chassis_test3\chassis_task.o: ..\APP\User_lib\user_lib.h

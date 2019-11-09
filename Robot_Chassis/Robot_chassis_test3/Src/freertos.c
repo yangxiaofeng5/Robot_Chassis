@@ -35,7 +35,7 @@
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
-uint8_t pcWriteBuffer[200];
+//#define SYSTEM_INFORMATION_CALLBACK //任务运行时间信息统计显示，通过屏蔽来使用
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
@@ -60,6 +60,7 @@ osThreadId vProtect_TaskHandle;
 osThreadId vTask_10msHandle;
 osThreadId vOut_ControlHandle;
 osThreadId vRevolver_TaskHandle;
+osThreadId vTest_TaskHandle;
 
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN FunctionPrototypes */
@@ -74,11 +75,29 @@ void Protect_Task(void const * argument);
 void Task_10ms(void const * argument);
 void Out_Control(void const * argument);
 void Revolver_Task(void const * argument);
+void Test_Task(void const * argument);
 
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
 
 /* GetIdleTaskMemory prototype (linked to static allocation support) */
 void vApplicationGetIdleTaskMemory( StaticTask_t **ppxIdleTaskTCBBuffer, StackType_t **ppxIdleTaskStackBuffer, uint32_t *pulIdleTaskStackSize );
+
+/* Hook prototypes */
+void configureTimerForRunTimeStats(void);
+unsigned long getRunTimeCounterValue(void);
+
+/* USER CODE BEGIN 1 */
+/* Functions needed when configGENERATE_RUN_TIME_STATS is on */
+__weak void configureTimerForRunTimeStats(void)
+{
+
+}
+
+__weak unsigned long getRunTimeCounterValue(void)
+{
+	return 0;
+}
+/* USER CODE END 1 */
 
 /* USER CODE BEGIN GET_IDLE_TASK_MEMORY */
 static StaticTask_t xIdleTaskTCBBuffer;
@@ -121,40 +140,12 @@ void MX_FREERTOS_Init(void) {
 
   /* Create the thread(s) */
   /* definition and creation of vStart_Task */
-  osThreadDef(vStart_Task, StartTask, osPriorityNormal, 0, 128);
+  osThreadDef(vStart_Task, StartTask, osPriorityRealtime, 0, 128);
   vStart_TaskHandle = osThreadCreate(osThread(vStart_Task), NULL);
-
-//  /* definition and creation of vInitial_Task */
-//  osThreadDef(vInitial_Task, Initial_Task, osPriorityNormal, 0, 128);
-//  vInitial_TaskHandle = osThreadCreate(osThread(vInitial_Task), NULL);
-
-//  /* definition and creation of vChassis_Task */
-//  osThreadDef(vChassis_Task, Chassis_Task, osPriorityNormal, 0, 128);
-//  vChassis_TaskHandle = osThreadCreate(osThread(vChassis_Task), NULL);
-
-//  /* definition and creation of vGimbal_Task */
-//  osThreadDef(vGimbal_Task, Gimbal_Task, osPriorityAboveNormal, 0, 128);
-//  vGimbal_TaskHandle = osThreadCreate(osThread(vGimbal_Task), NULL);
-
-//  /* definition and creation of vProtect_Task */
-//  osThreadDef(vProtect_Task, Protect_Task, osPriorityLow, 0, 128);
-//  vProtect_TaskHandle = osThreadCreate(osThread(vProtect_Task), NULL);
-
-//  /* definition and creation of vTask_10ms */
-//  osThreadDef(vTask_10ms, Task_10ms, osPriorityHigh, 0, 128);
-//  vTask_10msHandle = osThreadCreate(osThread(vTask_10ms), NULL);
-
-//  /* definition and creation of vOut_Control */
-//  osThreadDef(vOut_Control, Out_Control, osPriorityRealtime, 0, 128);
-//  vOut_ControlHandle = osThreadCreate(osThread(vOut_Control), NULL);
-
-//  /* definition and creation of vRevolver_Task */
-//  osThreadDef(vRevolver_Task, Revolver_Task, osPriorityHigh, 0, 128);
-//  vRevolver_TaskHandle = osThreadCreate(osThread(vRevolver_Task), NULL);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
-	printf("everything is ready!");
+	printf("Everything is ready!\nStart to fight!!!!!\n");
   /* USER CODE END RTOS_THREADS */
 
 }
@@ -168,6 +159,7 @@ void MX_FREERTOS_Init(void) {
 /* USER CODE END Header_StartTask */
 void StartTask(void const * argument)
 {
+    
     
     
     
@@ -207,6 +199,13 @@ void StartTask(void const * argument)
 	/************失控任务控制**************/
   osThreadDef(vProtect_Task, Protect_Task, osPriorityLow, 0, 128);
   vProtect_TaskHandle = osThreadCreate(osThread(vProtect_Task), NULL);
+	
+	/************程序调试任务**************/
+	#ifdef SYSTEM_INFORMATION_CALLBACK
+		osThreadDef(vTest_Task, Test_Task, osPriorityNormal, 0, 128);
+		vTest_TaskHandle = osThreadCreate(osThread(vTest_Task), NULL);
+	#else
+	#endif
 
 	vTaskDelete(vStart_TaskHandle); //删除开始任务
   portEXIT_CRITICAL();
@@ -218,59 +217,6 @@ void StartTask(void const * argument)
   /* USER CODE END StartTask */
 }
 
-/* USER CODE BEGIN Header_Initial_Task */
-/**
-* @brief Function implementing the vInitial_Task thread.
-* @param argument: Not used
-* @retval None
-*/
-/* USER CODE END Header_Initial_Task */
-//void Initial_Task(void const * argument)
-//{
-//  /* USER CODE BEGIN Initial_Task */
-//  /* Infinite loop */
-//  for(;;)
-//  {
-//    osDelay(1);
-//  }
-//  /* USER CODE END Initial_Task */
-//}
-
-///* USER CODE BEGIN Header_Chassis_Task */
-///**
-//* @brief Function implementing the vChassis_Task thread.
-//* @param argument: Not used
-//* @retval None
-//*/
-///* USER CODE END Header_Chassis_Task */
-//void Chassis_Task(void const * argument)
-//{
-//  /* USER CODE BEGIN Chassis_Task */
-//  /* Infinite loop */
-//  for(;;)
-//  {
-//    osDelay(1);
-//  }
-//  /* USER CODE END Chassis_Task */
-//}
-
-///* USER CODE BEGIN Header_Gimbal_Task */
-///**
-//* @brief Function implementing the vGimbal_Task thread.
-//* @param argument: Not used
-//* @retval None
-//*/
-///* USER CODE END Header_Gimbal_Task */
-//void Gimbal_Task(void const * argument)
-//{
-//  /* USER CODE BEGIN Gimbal_Task */
-//  /* Infinite loop */
-//  for(;;)
-//  {
-//    osDelay(1);
-//  }
-//  /* USER CODE END Gimbal_Task */
-//}
 
 /* USER CODE BEGIN Header_Protect_Task */
 /**
@@ -324,15 +270,7 @@ void Task_10ms(void const * argument)
   /* Infinite loop */
   for(;;)
   {
-//		printf("=================================================\r\n");
-//		printf("\r\ntask_name  \tstate\t prior\tstack\t Id\r\n");
-//		vTaskList((char *)&pcWriteBuffer);
-//		printf("%s\r\n", pcWriteBuffer);
-
-//		printf("\r\ntask_name     time_count(10us) usage_pec\r\n");
-//		vTaskGetRunTimeStats((char *)&pcWriteBuffer);
-//		printf("%s\r\n", pcWriteBuffer);
-    osDelay(5);
+    osDelay(1);
   }
   /* USER CODE END Task_10ms */
 }
@@ -355,27 +293,18 @@ void Out_Control(void const * argument)
   /* USER CODE END Out_Control */
 }
 
-/* USER CODE BEGIN Header_Revolver_Task */
+/* USER CODE BEGIN Header_Test_Task */
 /**
-* @brief Function implementing the vRevolver_Task thread.
+* @brief Function implementing the vTest_Task thread.
 * @param argument: Not used
 * @retval None
 */
-/* USER CODE END Header_Revolver_Task */
-//void Revolver_Task(void const * argument)
-//{
-//  /* USER CODE BEGIN Revolver_Task */
-//  /* Infinite loop */
-//  for(;;)
-//  {
-//    osDelay(1);
-//  }
-//  /* USER CODE END Revolver_Task */
-//}
+/* USER CODE END Header_Test_Task */
+
 
 /* Private application code --------------------------------------------------*/
 /* USER CODE BEGIN Application */
-     
+
 /* USER CODE END Application */
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

@@ -42,7 +42,7 @@ extern "C" {
 /********系统需要调用的库文件********/
 #include "bsp_can.h"
 #include "stdio.h"
-	
+#include "tim.h"
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/

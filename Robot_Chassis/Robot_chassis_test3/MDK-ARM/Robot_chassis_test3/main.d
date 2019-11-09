@@ -40,6 +40,7 @@ robot_chassis_test3\main.o: ..\APP\robomaster_vcan\robomaster_vcan.h
 robot_chassis_test3\main.o: ..\Hardware\Bsp-can\bsp_can.h
 robot_chassis_test3\main.o: ../Inc/can.h
 robot_chassis_test3\main.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+robot_chassis_test3\main.o: ../Inc/tim.h
 robot_chassis_test3\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h
 robot_chassis_test3\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
 robot_chassis_test3\main.o: ../Inc/FreeRTOSConfig.h
@@ -56,5 +57,4 @@ robot_chassis_test3\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/s
 robot_chassis_test3\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h
 robot_chassis_test3\main.o: ../Inc/dma.h
 robot_chassis_test3\main.o: ../Inc/spi.h
-robot_chassis_test3\main.o: ../Inc/tim.h
 robot_chassis_test3\main.o: ../Inc/gpio.h

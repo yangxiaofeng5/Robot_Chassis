@@ -40,3 +40,4 @@ robot_chassis_test3\stm32f4xx_hal_msp.o: ..\APP\robomaster_vcan\robomaster_vcan.
 robot_chassis_test3\stm32f4xx_hal_msp.o: ..\Hardware\Bsp-can\bsp_can.h
 robot_chassis_test3\stm32f4xx_hal_msp.o: ../Inc/can.h
 robot_chassis_test3\stm32f4xx_hal_msp.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+robot_chassis_test3\stm32f4xx_hal_msp.o: ../Inc/tim.h

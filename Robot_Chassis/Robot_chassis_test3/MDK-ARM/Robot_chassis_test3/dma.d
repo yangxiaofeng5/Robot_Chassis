@@ -41,3 +41,4 @@ robot_chassis_test3\dma.o: ..\APP\robomaster_vcan\robomaster_vcan.h
 robot_chassis_test3\dma.o: ..\Hardware\Bsp-can\bsp_can.h
 robot_chassis_test3\dma.o: ../Inc/can.h
 robot_chassis_test3\dma.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+robot_chassis_test3\dma.o: ../Inc/tim.h

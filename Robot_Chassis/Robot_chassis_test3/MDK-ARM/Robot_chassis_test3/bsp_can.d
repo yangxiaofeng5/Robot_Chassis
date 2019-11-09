@@ -41,4 +41,5 @@ robot_chassis_test3\bsp_can.o: ../Inc/usart.h
 robot_chassis_test3\bsp_can.o: ..\APP\robomaster_vcan\robomaster_vcan.h
 robot_chassis_test3\bsp_can.o: ..\Hardware\Bsp-can\bsp_can.h
 robot_chassis_test3\bsp_can.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+robot_chassis_test3\bsp_can.o: ../Inc/tim.h
 robot_chassis_test3\bsp_can.o: ..\Hardware\Bsp-can\bsp_led.h

@@ -49,6 +49,7 @@ robot_chassis_test3\freertos.o: ..\APP\robomaster_vcan\robomaster_vcan.h
 robot_chassis_test3\freertos.o: ..\Hardware\Bsp-can\bsp_can.h
 robot_chassis_test3\freertos.o: ../Inc/can.h
 robot_chassis_test3\freertos.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+robot_chassis_test3\freertos.o: ../Inc/tim.h
 robot_chassis_test3\freertos.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h
 robot_chassis_test3\freertos.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h
 robot_chassis_test3\freertos.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h

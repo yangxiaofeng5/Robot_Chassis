@@ -40,6 +40,7 @@ robot_chassis_test3\stm32f4xx_it.o: ..\APP\robomaster_vcan\robomaster_vcan.h
 robot_chassis_test3\stm32f4xx_it.o: ..\Hardware\Bsp-can\bsp_can.h
 robot_chassis_test3\stm32f4xx_it.o: ../Inc/can.h
 robot_chassis_test3\stm32f4xx_it.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+robot_chassis_test3\stm32f4xx_it.o: ../Inc/tim.h
 robot_chassis_test3\stm32f4xx_it.o: ../Inc/stm32f4xx_it.h
 robot_chassis_test3\stm32f4xx_it.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
 robot_chassis_test3\stm32f4xx_it.o: ../Inc/FreeRTOSConfig.h
