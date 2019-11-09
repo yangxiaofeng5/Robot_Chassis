@@ -99,8 +99,8 @@ void chassis_behaviour_mode_set(chassis_move_t *chassis_move_mode)
         return;
     }
 
-    //遥控器设置行为模式为左边开关的三档模式
-    if (switch_is_mid(chassis_move_mode->chassis_RC->switch_left))//底盘保持不动
+    //遥控器设置行为模式为 左边开关 的三档模式
+    if (switch_is_mid(chassis_move_mode->chassis_RC->switch_left))//底盘不跟随yaw
     {
         chassis_behaviour_mode = CHASSIS_NO_FOLLOW_YAW;
     }
@@ -123,12 +123,12 @@ void chassis_behaviour_mode_set(chassis_move_t *chassis_move_mode)
     if (chassis_behaviour_mode == CHASSIS_ZERO_FORCE)
     {
 
-        chassis_move_mode->chassis_mode = CHASSIS_VECTOR_RAW; //当行为是底盘无力，则设置底盘状态机为 raw，原生状态机。
+        chassis_move_mode->chassis_mode = CHASSIS_VECTOR_RAW; 							//当行为是底盘无力，则设置底盘状态机为 raw，原生状态机。
     }
     else if (chassis_behaviour_mode == CHASSIS_NO_MOVE)
     {
 
-        chassis_move_mode->chassis_mode = CHASSIS_VECTOR_NO_FOLLOW_YAW; //当行为是底盘不移动，则设置底盘状态机为 底盘不跟随角度 状态机。
+        chassis_move_mode->chassis_mode = CHASSIS_VECTOR_NO_FOLLOW_YAW; 		//当行为是底盘不移动，则设置底盘状态机为 底盘不跟随角度 状态机。
     }
     else if (chassis_behaviour_mode == CHASSIS_INFANTRY_FOLLOW_GIMBAL_YAW)
     {
@@ -143,13 +143,14 @@ void chassis_behaviour_mode_set(chassis_move_t *chassis_move_mode)
     else if (chassis_behaviour_mode == CHASSIS_NO_FOLLOW_YAW)
     {
 
-        chassis_move_mode->chassis_mode = CHASSIS_VECTOR_NO_FOLLOW_YAW; //当行为是底盘不跟随角度，则设置底盘状态机为 底盘不跟随角度 状态机。
+        chassis_move_mode->chassis_mode = CHASSIS_VECTOR_NO_FOLLOW_YAW; 		//当行为是底盘不跟随角度，则设置底盘状态机为 底盘不跟随角度 状态机。
     }
     else if (chassis_behaviour_mode == CHASSIS_OPEN)
     {
 
-        chassis_move_mode->chassis_mode = CHASSIS_VECTOR_RAW; //当行为是底盘开环，则设置底盘状态机为 底盘原生raw 状态机。
+        chassis_move_mode->chassis_mode = CHASSIS_VECTOR_RAW; 							//当行为是底盘开环，则设置底盘状态机为 底盘原生raw 状态机。
     }
+
 }
 void chassis_behaviour_control_set(fp32 *vx_set, fp32 *vy_set, fp32 *angle_set, chassis_move_t *chassis_move_rc_to_vector)
 {
@@ -183,6 +184,7 @@ void chassis_behaviour_control_set(fp32 *vx_set, fp32 *vy_set, fp32 *angle_set, 
     {
         chassis_open_set_control(vx_set, vy_set, angle_set, chassis_move_rc_to_vector);
     }
+		
 }
 /**
   * @brief          底盘无力的行为状态机下，底盘模式是raw，故而设定值会直接发送到can总线上故而将设定值都设置为0

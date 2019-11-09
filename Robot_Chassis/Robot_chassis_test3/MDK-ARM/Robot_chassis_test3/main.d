@@ -30,6 +30,8 @@ robot_chassis_test3\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_fl
 robot_chassis_test3\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h
 robot_chassis_test3\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h
 robot_chassis_test3\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h
+robot_chassis_test3\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h
+robot_chassis_test3\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
 robot_chassis_test3\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
 robot_chassis_test3\main.o: ..\Hardware\DJI_Remote\dji_remote.h
 robot_chassis_test3\main.o: ../Inc/main.h
@@ -54,4 +56,5 @@ robot_chassis_test3\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/s
 robot_chassis_test3\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h
 robot_chassis_test3\main.o: ../Inc/dma.h
 robot_chassis_test3\main.o: ../Inc/spi.h
+robot_chassis_test3\main.o: ../Inc/tim.h
 robot_chassis_test3\main.o: ../Inc/gpio.h

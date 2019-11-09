@@ -1,8 +1,10 @@
 #include "User_task.h"
 #include "oled.h"
-#include "dji_remote.h"
+#include "bsp_imu.h"
+
 #include "robomaster_vcan.h"
 
+extern imu_t      imu;
 
 void User_Task(void const * argument)
 {
@@ -12,16 +14,15 @@ void User_Task(void const * argument)
   /* Infinite loop */
   for(;;)
   {
-		printf ("ch1=%d ",remote_control.ch1);
-		printf ("ch2=%d ",remote_control.ch2);
-		printf ("ch3=%d ",remote_control.ch3);
-		printf ("ch4=%d\r\n",remote_control.ch4);
-//		oled_showchar(1, 1, 'a');
+		MPU6500_GET_DATA();
+		osDelay(5);
+		printf(" Roll: %8.3lf  Pitch: %8.3lf  Yaw: %8.3lf\n", imu.rol, imu.pit, imu.yaw);
 		
-		wave_form_data[0] = (short)remote_control.ch1;
-    wave_form_data[1] = (short)remote_control.ch2;
-		wave_form_data[2] = (short)remote_control.ch3;
-		wave_form_data[3] = (short)remote_control.ch4;
+		wave_form_data[0]=imu.rol;
+		wave_form_data[1]=imu.pit;
+		wave_form_data[2]=imu.yaw;
+		wave_form_data[3]=imu.temp;
+		wave_form_data[4]=mpu_data.gz;
 		shanwai_send_wave_form();
     osDelay(10);
   }

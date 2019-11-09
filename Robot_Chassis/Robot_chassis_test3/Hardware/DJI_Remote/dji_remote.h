@@ -64,6 +64,7 @@ typedef struct {
 
 extern uint8_t UART_Buffer[100];
 extern RC_Type remote_control;
+extern uint32_t Latest_Remote_Control_Pack_Time;//用于检测遥控器是否离线
 /***********************END****************************/
 
 /**********************接收机需要的回调函数***********************/

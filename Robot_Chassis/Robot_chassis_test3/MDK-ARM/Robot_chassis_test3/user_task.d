@@ -45,6 +45,8 @@ robot_chassis_test3\user_task.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_h
 robot_chassis_test3\user_task.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h
 robot_chassis_test3\user_task.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h
 robot_chassis_test3\user_task.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h
+robot_chassis_test3\user_task.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h
+robot_chassis_test3\user_task.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
 robot_chassis_test3\user_task.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
 robot_chassis_test3\user_task.o: ../Inc/spi.h
 robot_chassis_test3\user_task.o: ../Inc/main.h
@@ -55,3 +57,9 @@ robot_chassis_test3\user_task.o: ..\APP\robomaster_vcan\robomaster_vcan.h
 robot_chassis_test3\user_task.o: ..\Hardware\Bsp-can\bsp_can.h
 robot_chassis_test3\user_task.o: ../Inc/can.h
 robot_chassis_test3\user_task.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+robot_chassis_test3\user_task.o: ..\Hardware\IMU\bsp_imu.h
+robot_chassis_test3\user_task.o: ..\Hardware\IMU\mytype.h
+robot_chassis_test3\user_task.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+robot_chassis_test3\user_task.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+robot_chassis_test3\user_task.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+robot_chassis_test3\user_task.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h

@@ -31,6 +31,8 @@ robot_chassis_test3\dji_remote.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_
 robot_chassis_test3\dji_remote.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h
 robot_chassis_test3\dji_remote.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h
 robot_chassis_test3\dji_remote.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h
+robot_chassis_test3\dji_remote.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h
+robot_chassis_test3\dji_remote.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
 robot_chassis_test3\dji_remote.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
 robot_chassis_test3\dji_remote.o: ..\Hardware\DJI_Remote\dji_remote.h
 robot_chassis_test3\dji_remote.o: ..\APP\robomaster_vcan\robomaster_vcan.h
@@ -39,3 +41,10 @@ robot_chassis_test3\dji_remote.o: ../Inc/can.h
 robot_chassis_test3\dji_remote.o: ../Inc/main.h
 robot_chassis_test3\dji_remote.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 robot_chassis_test3\dji_remote.o: ../Inc/usart.h
+robot_chassis_test3\dji_remote.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
+robot_chassis_test3\dji_remote.o: ../Inc/FreeRTOSConfig.h
+robot_chassis_test3\dji_remote.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h
+robot_chassis_test3\dji_remote.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h
+robot_chassis_test3\dji_remote.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h
+robot_chassis_test3\dji_remote.o: ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F/portmacro.h
+robot_chassis_test3\dji_remote.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h

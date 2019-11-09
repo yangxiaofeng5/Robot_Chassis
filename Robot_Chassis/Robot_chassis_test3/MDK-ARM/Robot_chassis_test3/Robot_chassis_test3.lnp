@@ -6,6 +6,7 @@
 "robot_chassis_test3\dma.o"
 "robot_chassis_test3\freertos.o"
 "robot_chassis_test3\spi.o"
+"robot_chassis_test3\tim.o"
 "robot_chassis_test3\usart.o"
 "robot_chassis_test3\stm32f4xx_it.o"
 "robot_chassis_test3\stm32f4xx_hal_msp.o"
@@ -41,7 +42,8 @@
 "..\DSB_LIB\arm_cortexM4lf_math.lib"
 "robot_chassis_test3\initial_task.o"
 "robot_chassis_test3\chassis_task.o"
-"robot_chassis_test3\user_task.o"
+"robot_chassis_test3\gimbal_task.o"
+"robot_chassis_test3\revolver_task.o"
 "robot_chassis_test3\robomaster_vcan.o"
 "robot_chassis_test3\user_lib.o"
 "robot_chassis_test3\chassis_behaviour.o"
@@ -49,6 +51,7 @@
 "robot_chassis_test3\pid.o"
 "robot_chassis_test3\dji_remote.o"
 "robot_chassis_test3\oled.o"
+"robot_chassis_test3\bsp_imu.o"
 --library_type=microlib --strict --scatter "Robot_chassis_test3\Robot_chassis_test3.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

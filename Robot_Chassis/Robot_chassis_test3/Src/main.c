@@ -24,6 +24,7 @@
 #include "can.h"
 #include "dma.h"
 #include "spi.h"
+#include "tim.h"
 #include "usart.h"
 #include "gpio.h"
 
@@ -99,6 +100,8 @@ int main(void)
   MX_SPI1_Init();
   MX_USART1_UART_Init();
   MX_USART6_UART_Init();
+  MX_SPI5_Init();
+  MX_TIM3_Init();
   /* USER CODE BEGIN 2 */
 	can_user_init(&hcan1);															//can设备准备好
 	HAL_UART_Receive_IT_IDLE(&huart1,UART_Buffer,100);   //启动串口接收

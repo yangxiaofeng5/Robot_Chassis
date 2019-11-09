@@ -62,9 +62,9 @@
 #define SWING_NO_MOVE_ANGLE 0.7f
 
 //底盘电机速度环PID
-#define M3508_MOTOR_SPEED_PID_KP 8000.0f//1500
+#define M3508_MOTOR_SPEED_PID_KP 1200.0f//1500
 #define M3508_MOTOR_SPEED_PID_KI 50.0f
-#define M3508_MOTOR_SPEED_PID_KD 0.0f
+#define M3508_MOTOR_SPEED_PID_KD 10.0f
 #define M3508_MOTOR_SPEED_PID_MAX_OUT MAX_MOTOR_CAN_CURRENT
 #define M3508_MOTOR_SPEED_PID_MAX_IOUT 2000.0f
 
@@ -92,18 +92,19 @@
 //遥控器左右摇杆（max 660）转化成车体左右速度（m/s）的比例
 #define CHASSIS_VY_RC_SEN 0.005f
 
-#define CHASSIS_ANGLE_Z_RC_SEN 0.000002f
+#define CHASSIS_ANGLE_Z_RC_SEN 0.006f//0.000002f
 //不跟随云台的时候 遥控器的yaw遥杆（max 660）转化成车体旋转速度的比例
 #define CHASSIS_WZ_RC_SEN 0.01f
 
 extern moto_info_t motor_info[MOTOR_MAX_NUM];
 extern pid_struct_t motor_pid[7];
-/*****底盘运动状态的所有状态标签*****/
+/*****底盘运动状态的所有模式标签*****/
 typedef enum
 {
   CHASSIS_VECTOR_FOLLOW_GIMBAL_YAW,
   CHASSIS_VECTOR_FOLLOW_CHASSIS_YAW,
-  CHASSIS_VECTOR_NO_FOLLOW_YAW,
+  CHASSIS_VECTOR_NO_FOLLOW_YAW,//底盘不跟随云台
+	CHASSIS_VECTOR_SMALL_TOP_YAW,//小陀螺标签
   CHASSIS_VECTOR_RAW,
 
   //  CHASSIS_AUTO,

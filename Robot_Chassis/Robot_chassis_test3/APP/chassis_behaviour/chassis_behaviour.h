@@ -3,6 +3,7 @@
 #include "main.h"
 #include "chassis_task.h"
 
+//底盘最基本模式标签
 typedef enum
 {
   CHASSIS_ZERO_FORCE,                  //底盘无力

@@ -3,6 +3,7 @@
 #include "bsp_can.h"
 #include "oled.h"
 #include "robomaster_vcan.h"
+#include "bsp_imu.h"
 
 #include "arm_math.h"
 
@@ -24,8 +25,8 @@ pid_struct_t motor_pid[7];
 //float target_speed=1000;
 /**********底盘运动数据**********/
 static chassis_move_t chassis_move;
-
-
+/***********小陀螺底盘测试用的陀螺仪数据**********/
+extern imu_t      imu;
 
 
 /**********底盘运动初始化**********/
@@ -51,7 +52,7 @@ void Chassis_Task(void const * argument)
 {
   /* USER CODE BEGIN Chassis_Task */
 	
-	printf("In Chassis_Task!\r\n");
+//	printf("In Chassis_Task!\r\n");
 	osDelay (CHASSIS_TASK_INIT_TIME);
 	Chassis_Init (&chassis_move);
 	
@@ -94,18 +95,19 @@ void Chassis_Task(void const * argument)
 //												motor_info[1].rotor_speed, 
 //												motor_info[2].rotor_speed, 
 //												motor_info[3].rotor_speed_set);
+
+
+//		wave_form_data[0] = chassis_move.motor_chassis[0].speed*1000;
+//    wave_form_data[1] = chassis_move.motor_chassis[1].speed*1000;
+//		wave_form_data[2] = chassis_move.motor_chassis[2].speed*1000;
+//		wave_form_data[3] = chassis_move.motor_chassis[3].speed*1000;
 //		
-		wave_form_data[0] = chassis_move.motor_chassis[0].speed*1000;
-    wave_form_data[1] = chassis_move.motor_chassis[1].speed*1000;
-		wave_form_data[2] = chassis_move.motor_chassis[2].speed*1000;
-		wave_form_data[3] = chassis_move.motor_chassis[3].speed*1000;
-		
-		wave_form_data[4] = chassis_move.motor_chassis[0].speed_set*1000;
-    wave_form_data[5] = chassis_move.motor_chassis[1].speed_set*1000;
-		wave_form_data[6] = chassis_move.motor_chassis[2].speed_set*1000;
-		wave_form_data[7] = chassis_move.motor_chassis[3].speed_set*1000;
-		
-		shanwai_send_wave_form();
+//		wave_form_data[4] = chassis_move.motor_chassis[0].speed_set*1000;
+//    wave_form_data[5] = chassis_move.motor_chassis[1].speed_set*1000;
+//		wave_form_data[6] = chassis_move.motor_chassis[2].speed_set*1000;
+//		wave_form_data[7] = chassis_move.motor_chassis[3].speed_set*1000;
+//		
+//		shanwai_send_wave_form();
 //    osDelay(10);
 	}
   /* USER CODE END Chassis_Task */
@@ -325,17 +327,12 @@ static void chassis_set_contorl(chassis_move_t *chassis_move_control)
     }
     else if (chassis_move_control->chassis_mode == CHASSIS_VECTOR_NO_FOLLOW_YAW)
     {
-
 			//放弃跟随云台
 			//这个模式下，角度设置的为 角速度
 			fp32 chassis_wz = angle_set;
 			chassis_move_control->wz_set = chassis_wz;
 			chassis_move_control->vx_set = fp32_constrain(vx_set, chassis_move_control->vx_min_speed, chassis_move_control->vx_max_speed);
 			chassis_move_control->vy_set = fp32_constrain(vy_set, chassis_move_control->vy_min_speed, chassis_move_control->vy_max_speed);
-			
-//		wave_form_data[2] = chassis_move_control->vx_set*1000;
-//		wave_form_data[3] = chassis_move_control->vy_set*1000;
-//		shanwai_send_wave_form();
     }
     else if (chassis_move_control->chassis_mode == CHASSIS_VECTOR_RAW)
     {
@@ -346,16 +343,26 @@ static void chassis_set_contorl(chassis_move_t *chassis_move_control)
 			chassis_move_control->chassis_cmd_slow_set_vy.out = 0.0f;
     }
 
-	
 }
 
 static void chassis_vector_to_mecanum_wheel_speed(const fp32 vx_set, const fp32 vy_set, const fp32 wz_set, fp32 wheel_speed[4])
 {
     //旋转的时候， 由于云台靠前，所以是前面两轮 0 ，1 旋转的速度变慢， 后面两轮 2,3 旋转的速度变快
-    wheel_speed[0] = -vx_set - vy_set + (CHASSIS_WZ_SET_SCALE - 1.0f) * MOTOR_DISTANCE_TO_CENTER * wz_set;
-    wheel_speed[1] = vx_set - vy_set + (CHASSIS_WZ_SET_SCALE - 1.0f) * MOTOR_DISTANCE_TO_CENTER * wz_set;
-    wheel_speed[2] = vx_set + vy_set + (-CHASSIS_WZ_SET_SCALE - 1.0f) * MOTOR_DISTANCE_TO_CENTER * wz_set;
+		wheel_speed[0] = -vx_set + vy_set + (CHASSIS_WZ_SET_SCALE - 1.0f) * MOTOR_DISTANCE_TO_CENTER * wz_set;	
+		wheel_speed[0] = +vx_set - vy_set + (CHASSIS_WZ_SET_SCALE - 1.0f) * MOTOR_DISTANCE_TO_CENTER * wz_set;
+    wheel_speed[1] = +vx_set + vy_set + (CHASSIS_WZ_SET_SCALE - 1.0f) * MOTOR_DISTANCE_TO_CENTER * wz_set;
+    wheel_speed[2] = -vx_set - vy_set + (-CHASSIS_WZ_SET_SCALE - 1.0f) * MOTOR_DISTANCE_TO_CENTER * wz_set;
     wheel_speed[3] = -vx_set + vy_set + (-CHASSIS_WZ_SET_SCALE - 1.0f) * MOTOR_DISTANCE_TO_CENTER * wz_set;
+	
+//	//小陀螺
+//		fp32 sin_yaw = 0.0f, cos_yaw = 0.0f;
+//		sin_yaw = arm_sin_f32(imu.yaw);
+//		cos_yaw = arm_cos_f32(imu.yaw);
+//	
+//		wheel_speed[0] = +vx_set*cos_yaw - vy_set*sin_yaw + 0.6f;
+//    wheel_speed[1] = +vx_set*cos_yaw + vy_set*sin_yaw + 0.6f;
+//    wheel_speed[2] = -vx_set*cos_yaw - vy_set*sin_yaw + 0.6f;
+//    wheel_speed[3] = -vx_set*cos_yaw + vy_set*sin_yaw + 0.6f;
 }
 
 
@@ -365,6 +372,8 @@ static void chassis_control_loop(chassis_move_t *chassis_move_control_loop)
     fp32 temp = 0.0f;
     fp32 wheel_speed[4] = {0.0f, 0.0f, 0.0f, 0.0f};
     uint8_t i = 0;
+		
+		
     //麦轮运动分解
     chassis_vector_to_mecanum_wheel_speed(chassis_move_control_loop->vx_set,
                                           chassis_move_control_loop->vy_set, chassis_move_control_loop->wz_set, wheel_speed);

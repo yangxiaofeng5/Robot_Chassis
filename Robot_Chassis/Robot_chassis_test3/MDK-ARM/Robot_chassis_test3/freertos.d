@@ -39,6 +39,8 @@ robot_chassis_test3\freertos.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ha
 robot_chassis_test3\freertos.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h
 robot_chassis_test3\freertos.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h
 robot_chassis_test3\freertos.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h
+robot_chassis_test3\freertos.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h
+robot_chassis_test3\freertos.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
 robot_chassis_test3\freertos.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
 robot_chassis_test3\freertos.o: ..\Hardware\DJI_Remote\dji_remote.h
 robot_chassis_test3\freertos.o: ../Inc/main.h
@@ -53,8 +55,6 @@ robot_chassis_test3\freertos.o: ../Middlewares/Third_Party/FreeRTOS/Source/inclu
 robot_chassis_test3\freertos.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h
 robot_chassis_test3\freertos.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h
 robot_chassis_test3\freertos.o: ..\Task\Initial_Task\Initial_Task.h
-robot_chassis_test3\freertos.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h
-robot_chassis_test3\freertos.o: ..\Task\User_Task\User_task.h
 robot_chassis_test3\freertos.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h
 robot_chassis_test3\freertos.o: ..\Task\Chassis_Task\Chassis_Task.h
 robot_chassis_test3\freertos.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h

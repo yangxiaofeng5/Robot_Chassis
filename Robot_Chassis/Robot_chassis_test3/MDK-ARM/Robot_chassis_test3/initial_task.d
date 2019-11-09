@@ -48,6 +48,8 @@ robot_chassis_test3\initial_task.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4x
 robot_chassis_test3\initial_task.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h
 robot_chassis_test3\initial_task.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h
 robot_chassis_test3\initial_task.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h
+robot_chassis_test3\initial_task.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h
+robot_chassis_test3\initial_task.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
 robot_chassis_test3\initial_task.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
 robot_chassis_test3\initial_task.o: ..\Hardware\DJI_Remote\dji_remote.h
 robot_chassis_test3\initial_task.o: ..\APP\robomaster_vcan\robomaster_vcan.h
@@ -60,3 +62,9 @@ robot_chassis_test3\initial_task.o: ..\Hardware\Bsp-can\pid.h
 robot_chassis_test3\initial_task.o: ..\APP\User_lib\user_lib.h
 robot_chassis_test3\initial_task.o: ..\Hardware\oled\oled.h
 robot_chassis_test3\initial_task.o: ../Inc/spi.h
+robot_chassis_test3\initial_task.o: ..\Hardware\IMU\bsp_imu.h
+robot_chassis_test3\initial_task.o: ..\Hardware\IMU\mytype.h
+robot_chassis_test3\initial_task.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+robot_chassis_test3\initial_task.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+robot_chassis_test3\initial_task.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+robot_chassis_test3\initial_task.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
