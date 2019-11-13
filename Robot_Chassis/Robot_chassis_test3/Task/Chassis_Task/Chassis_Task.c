@@ -21,10 +21,11 @@
 
 
 //extern moto_info_t motor_info[MOTOR_MAX_NUM];
-pid_struct_t motor_pid[7];
+//pid_struct_t motor_pid[7];
 //float target_speed=1000;
 /**********底盘运动数据**********/
 static chassis_move_t chassis_move;
+		
 /***********小陀螺底盘测试用的陀螺仪数据**********/
 extern imu_t      imu;
 
@@ -55,7 +56,7 @@ void Chassis_Task(void const * argument)
 //	printf("In Chassis_Task!\r\n");
 	osDelay (CHASSIS_TASK_INIT_TIME);
 	Chassis_Init (&chassis_move);
-	
+	//此处还需要加掉线检测
 	
   /* Infinite loop */
   for(;;)
@@ -74,41 +75,13 @@ void Chassis_Task(void const * argument)
 		oled_shownum(0,1,(short)remote_control.switch_left,0x00,1);
 		oled_refresh_gram();
 		
-				set_motor_voltage(0, 													//设置电机速度give_current,pid计算有问题
+				set_motor_voltage(2, 													//设置电机速度give_current,pid计算有问题
 		
 												(uint16_t)chassis_move.motor_chassis[0].give_current, 
 												(uint16_t)chassis_move.motor_chassis[1].give_current, 
 												(uint16_t)chassis_move.motor_chassis[2].give_current, 
 												(uint16_t)chassis_move.motor_chassis[3].give_current);
 		 vTaskDelay(CHASSIS_CONTROL_TIME_MS);
-	
-//电机检验代码
-//		for (uint8_t i = 0; i < 7; i++)
-//			{
-//				motor_info[i].rotor_speed_set = pid_calc(&motor_pid[i], target_speed, motor_info[i].rotor_speed);
-//			}
-//	
-//		printf("In Chassis_Task's loop\r\n");
-
-//		set_motor_voltage(0, 													//设置电机速度
-//												motor_info[0].rotor_speed, 
-//												motor_info[1].rotor_speed, 
-//												motor_info[2].rotor_speed, 
-//												motor_info[3].rotor_speed_set);
-
-
-//		wave_form_data[0] = chassis_move.motor_chassis[0].speed*1000;
-//    wave_form_data[1] = chassis_move.motor_chassis[1].speed*1000;
-//		wave_form_data[2] = chassis_move.motor_chassis[2].speed*1000;
-//		wave_form_data[3] = chassis_move.motor_chassis[3].speed*1000;
-//		
-//		wave_form_data[4] = chassis_move.motor_chassis[0].speed_set*1000;
-//    wave_form_data[5] = chassis_move.motor_chassis[1].speed_set*1000;
-//		wave_form_data[6] = chassis_move.motor_chassis[2].speed_set*1000;
-//		wave_form_data[7] = chassis_move.motor_chassis[3].speed_set*1000;
-//		
-//		shanwai_send_wave_form();
-//    osDelay(10);
 	}
   /* USER CODE END Chassis_Task */
 }
@@ -154,8 +127,8 @@ static void Chassis_Init(chassis_move_t *chassis_move_init)
 		//初始化旋转PID
     pid_init(&chassis_move_init->chassis_angle_pid, 
 						CHASSIS_FOLLOW_GIMBAL_PID_KP,
-						CHASSIS_FOLLOW_GIMBAL_PID_KP,
-						CHASSIS_FOLLOW_GIMBAL_PID_KP,
+						CHASSIS_FOLLOW_GIMBAL_PID_KI,
+						CHASSIS_FOLLOW_GIMBAL_PID_KD,
 						CHASSIS_FOLLOW_GIMBAL_PID_MAX_OUT,
 						CHASSIS_FOLLOW_GIMBAL_PID_MAX_IOUT);
     //用一阶滤波代替斜波函数生成

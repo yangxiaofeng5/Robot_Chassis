@@ -57,8 +57,9 @@ extern "C" {
 
 /* Exported macro ------------------------------------------------------------*/
 /* USER CODE BEGIN EM */
+typedef unsigned char bool_t;
 typedef float fp32;
-typedef float fp64;
+typedef double fp64;
 /* USER CODE END EM */
 
 /* Exported functions prototypes ---------------------------------------------*/

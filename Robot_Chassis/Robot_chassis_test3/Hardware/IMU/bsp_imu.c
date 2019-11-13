@@ -46,6 +46,10 @@ uint8_t               ist_buff[6];                           /* buffer to save I
 mpu_data_t            mpu_data;
 imu_t                 imu={0};
 
+static fp32 INS_gyro[3] = {0.0f, 0.0f, 0.0f};//rad/s
+static fp32 INS_accel[3] = {0.0f, 0.0f, 0.0f};
+static fp32 INS_Angle[3] = {0.0f, 0.0f, 0.0f};      //欧拉角 单位 rad
+
 /**
   * @brief  fast inverse square-root, to calculate 1/Sqrt(x)
   * @param  x: the number need to be calculated
@@ -285,6 +289,20 @@ void ist8310_get_data(uint8_t* buff)
     mpu_read_bytes(MPU6500_EXT_SENS_DATA_00, buff, 6); 
 }
 
+void MPU_Transfer(void)
+{
+	INS_gyro[0] = imu.wx;
+	INS_gyro[1] = imu.wy;
+	INS_gyro[2] = imu.wz;
+	
+	INS_accel[0] = imu.ax; 
+	INS_accel[1] = imu.ay;
+	INS_accel[2] = imu.az;
+	
+	INS_Angle[0] = imu.rol;
+	INS_Angle[1] = imu.pit;
+	INS_Angle[2] = imu.yaw;
+}
 
 /**
 	* @brief  get the data of imu
@@ -315,6 +333,8 @@ void mpu_get_data()
 	  imu.wx   = mpu_data.gx / 16.384f / 57.3f; 
     imu.wy   = mpu_data.gy / 16.384f / 57.3f; 
     imu.wz   = mpu_data.gz / 16.384f / 57.3f;
+		
+		MPU_Transfer();
 		
 		if(imu.temp >= 50||imu.temp <= 55)  //陀螺仪温度控制
 			MPU6500_PWM_TEMPERATURE_SET(0);
@@ -715,5 +735,17 @@ void MPU6500_GET_DATA(void)//陀螺仪获取数据
 	imu_attitude_update();
 }
 
+const fp32 *get_INS_angle_point(void)
+{
+    return INS_Angle;
+}
+const fp32 *get_MPU6500_Gyro_Data_Point(void)
+{
+    return INS_gyro;
+}
 
+const fp32 *get_MPU6500_Accel_Data_Point(void)
+{
+    return INS_accel;
+}
 

@@ -24,6 +24,9 @@
 #define CAN_CONTROL_ID_BASE   0x1ff
 #define CAN_CONTROL_ID_EXTEND 0x2ff
 #define MOTOR_MAX_NUM         7
+#define MOTOR_4_YAW						4
+#define MOTOR_5_PITCH					5
+#define MOTOR_6_TRIGGER				6
 
 //rm电机统一数据结构体，在这里我多了id，对比
 /**
@@ -42,9 +45,10 @@ typedef struct
     int16_t  set_voltage;
     uint16_t rotor_angle;
     int16_t  rotor_speed;
-		int16_t 	rotor_speed_set;
     int16_t  torque_current;
     uint8_t  temp;
+		uint16_t ecd;
+		uint16_t last_ecd;
 }moto_info_t;
 
 void can_user_init(CAN_HandleTypeDef* hcan);
@@ -52,5 +56,11 @@ void set_motor_voltage(uint8_t id_range, int16_t v1, int16_t v2, int16_t v3, int
 
 //返回底盘电机变量地址，通过指针方式获取原始数据,i的范围是0-3，对应0x201-0x204,
 extern const moto_info_t *get_Chassis_Motor_Measure_Point(uint8_t i);
+//返回yaw电机变量地址，通过指针方式获取原始数据
+extern const moto_info_t *get_Yaw_Gimbal_Motor_Measure_Point(void);
+//返回pitch电机变量地址，通过指针方式获取原始数据
+extern const moto_info_t *get_Pitch_Gimbal_Motor_Measure_Point(void);
+//返回trigger电机变量地址，通过指针方式获取原始数据
+extern const moto_info_t *get_Trigger_Motor_Measure_Point(void);
 
 #endif

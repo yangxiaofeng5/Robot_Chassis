@@ -89,7 +89,8 @@ void set_motor_voltage(uint8_t id_range, int16_t v1, int16_t v2, int16_t v3, int
   CAN_TxHeaderTypeDef tx_header;
   uint8_t             tx_data[8];
     
-  tx_header.StdId = 0x200;//(id_range == 0)?(0x1ff):(0x2ff);
+	if(id_range == 2)tx_header.StdId = 0x200;
+	else tx_header.StdId = (id_range == 0)?(0x1ff):(0x2ff);
   tx_header.IDE   = CAN_ID_STD;
   tx_header.RTR   = CAN_RTR_DATA;
   tx_header.DLC   = 8;
@@ -111,5 +112,20 @@ const moto_info_t *get_Chassis_Motor_Measure_Point(uint8_t i)
     return &motor_info[(i & 0x03)];//&0x03是屏蔽高六位，保证电机的前4位是底盘电机的
 }
 	
-	
-	
+//返回yaw电机变量地址，通过指针方式获取原始数据
+const moto_info_t *get_Yaw_Gimbal_Motor_Measure_Point(void)
+{
+    return &motor_info[MOTOR_4_YAW];//moto_info_t motor_info[MOTOR_MAX_NUM]={4096};中的MOTOR_MAX_NUM的数字4代表yaw电机
+}
+//返回pitch电机变量地址，通过指针方式获取原始数据
+const moto_info_t *get_Pitch_Gimbal_Motor_Measure_Point(void)
+{
+    return &motor_info[MOTOR_5_PITCH];//中的MOTOR_MAX_NUM的数字5代表yaw电机
+}
+
+//返回trigger电机变量地址，通过指针方式获取原始数据
+const moto_info_t *get_Trigger_Motor_Measure_Point(void)
+{
+    return &motor_info[MOTOR_6_TRIGGER];//中的MOTOR_MAX_NUM的数字6代表拨盘电机
+}
+

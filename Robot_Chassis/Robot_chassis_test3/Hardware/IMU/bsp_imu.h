@@ -15,6 +15,20 @@
 #include "mytype.h"
 #define MPU_DELAY(x) HAL_Delay(x)
 
+//获取姿态角指针地址后，对应姿态角的地址偏移量 fp32类型
+//融合了官方程序需要的东西
+#define INS_YAW_ADDRESS_OFFSET 0
+#define INS_PITCH_ADDRESS_OFFSET 1
+#define INS_ROLL_ADDRESS_OFFSET 2
+
+#define INS_GYRO_X_ADDRESS_OFFSET 0
+#define INS_GYRO_Y_ADDRESS_OFFSET 1
+#define INS_GYRO_Z_ADDRESS_OFFSET 2
+
+#define INS_ACCEL_X_ADDRESS_OFFSET 0
+#define INS_ACCEL_Y_ADDRESS_OFFSET 1
+#define INS_ACCEL_Z_ADDRESS_OFFSET 2
+
 typedef struct
 {
 	int16_t ax;
@@ -77,7 +91,10 @@ void mpu_offset_call(void);
 
 void MPU6500_INITIAL(void);//陀螺仪初始化
 void MPU6500_GET_DATA(void);//陀螺仪获取数据
-	
+
+extern const float *get_INS_angle_point(void);
+extern const float *get_MPU6500_Gyro_Data_Point(void);
+extern const float *get_MPU6500_Accel_Data_Point(void);
 
 #endif
 

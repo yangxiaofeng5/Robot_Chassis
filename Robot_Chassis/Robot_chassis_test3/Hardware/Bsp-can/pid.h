@@ -46,5 +46,5 @@ void pid_init(pid_struct_t *pid,
               float out_max);
               
 float  pid_calc(pid_struct_t *pid, float ref, float fdb);
-
+void pid_clear(pid_struct_t *pid);
 #endif

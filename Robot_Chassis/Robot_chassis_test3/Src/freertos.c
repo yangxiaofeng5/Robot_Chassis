@@ -35,7 +35,7 @@
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
-//#define SYSTEM_INFORMATION_CALLBACK //任务运行时间信息统计显示，通过屏蔽来使用
+#define SYSTEM_TEST 0 //测试程序，用来测试各个模块的状态通过0 1来控制
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
@@ -140,9 +140,8 @@ void MX_FREERTOS_Init(void) {
 
   /* Create the thread(s) */
   /* definition and creation of vStart_Task */
-  osThreadDef(vStart_Task, StartTask, osPriorityRealtime, 0, 128);
-  vStart_TaskHandle = osThreadCreate(osThread(vStart_Task), NULL);
-
+		osThreadDef(vStart_Task, StartTask, osPriorityRealtime, 0, 128);
+		vStart_TaskHandle = osThreadCreate(osThread(vStart_Task), NULL);
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
 	printf("Everything is ready!\nStart to fight!!!!!\n");
@@ -200,11 +199,10 @@ void StartTask(void const * argument)
   osThreadDef(vProtect_Task, Protect_Task, osPriorityLow, 0, 128);
   vProtect_TaskHandle = osThreadCreate(osThread(vProtect_Task), NULL);
 	
-	/************程序调试任务**************/
-	#ifdef SYSTEM_INFORMATION_CALLBACK
+			/************程序调试任务**************/
+	#if SYSTEM_TEST
 		osThreadDef(vTest_Task, Test_Task, osPriorityNormal, 0, 128);
 		vTest_TaskHandle = osThreadCreate(osThread(vTest_Task), NULL);
-	#else
 	#endif
 
 	vTaskDelete(vStart_TaskHandle); //删除开始任务

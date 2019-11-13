@@ -60,3 +60,15 @@ float pid_calc(pid_struct_t *pid, float ref, float fdb)
   LIMIT_MIN_MAX(pid->output, -pid->out_max, pid->out_max);
   return pid->output;
 }
+
+void pid_clear(pid_struct_t *pid)
+{
+	if (pid == NULL)
+	{
+		return;
+	}
+	pid->fdb = pid->fdb = 0.0f;
+	pid->p_out = pid->i_out = pid->d_out = pid->output = 0.0f;
+	pid->err[0] = pid->err[1] = 0.0f;
+	
+}
