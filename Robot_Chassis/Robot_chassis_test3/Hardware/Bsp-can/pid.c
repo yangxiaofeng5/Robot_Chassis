@@ -16,7 +16,9 @@
  ***************************************************************************/
  
 #include "pid.h"
-
+#include "User_lib.h"
+#include "arm_math.h"
+#define rad_format(Ang) loop_fp32_constrain((Ang), -PI, PI)
 /**
   * @brief  init pid parameter
   * @param  pid struct
@@ -30,6 +32,8 @@ void pid_init(pid_struct_t *pid,
               float i_max,
               float out_max)
 {
+	if (pid == NULL)	return ;
+		
   pid->kp      = kp;
   pid->ki      = ki;
   pid->kd      = kd;
@@ -46,6 +50,10 @@ void pid_init(pid_struct_t *pid,
   */
 float pid_calc(pid_struct_t *pid, float ref, float fdb)
 {
+	if (pid == NULL)
+	{
+		return 0.0f;
+	}
   pid->ref = ref;
   pid->fdb = fdb;
   pid->err[1] = pid->err[0];
@@ -69,6 +77,26 @@ void pid_clear(pid_struct_t *pid)
 	}
 	pid->fdb = pid->fdb = 0.0f;
 	pid->p_out = pid->i_out = pid->d_out = pid->output = 0.0f;
-	pid->err[0] = pid->err[1] = 0.0f;
-	
+	pid->err[0] = pid->err[1] = 0.0f;	
+}
+
+float PID_Calc(pid_struct_t *pid, float ref, float fdb, float error_delta)
+{
+    fp32 err;
+    if (pid == NULL)
+    {
+        return 0.0f;
+    }
+    pid->fdb = fdb;
+    pid->ref = ref;
+
+    err = ref - fdb;
+    pid->err[0] = rad_format(err);
+    pid->p_out = pid->kp * pid->err[0];
+    pid->i_out += pid->ki * pid->err[0];
+    pid->d_out = pid->kd * error_delta;
+    abs_limit(&pid->i_out, pid->i_max);
+    pid->output = pid->p_out + pid->i_out + pid->d_out;
+    abs_limit(&pid->output, pid->out_max);
+    return pid->output;
 }

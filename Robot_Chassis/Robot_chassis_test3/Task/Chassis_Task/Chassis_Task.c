@@ -53,7 +53,7 @@ void Chassis_Task(void const * argument)
 {
   /* USER CODE BEGIN Chassis_Task */
 	
-//	printf("In Chassis_Task!\r\n");
+	printf("In Chassis_Task!\r\n");
 	osDelay (CHASSIS_TASK_INIT_TIME);
 	Chassis_Init (&chassis_move);
 	//此处还需要加掉线检测

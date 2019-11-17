@@ -1,4 +1,5 @@
 #include "Test_Task.h"
+#include "bsp_imu.h"
 
 #include "bsp_can.h"
 #include "pid.h"
@@ -11,15 +12,18 @@ uint8_t ulHighFrequencyTimerTicks;
 
 extern moto_info_t motor_info[MOTOR_MAX_NUM];
 pid_struct_t motor_pid[7];
-uint16_t target_speed = 2000;
+uint16_t target_speed = 6000;
 
 void Test_Task(void const * argument)
 {
 	//	printf("In Test_Task!\n");
 	for (uint8_t i = 0; i < 7; i++)
   {
-    pid_init(&motor_pid[i], 2, 0.5, 0, 300, 30000); 
+    pid_init(&motor_pid[i], 2000, 0, 0, 5000, 30000); 
   }
+	
+	MPU6500_INITIAL();
+	
 
   for(;;)
   {
@@ -37,28 +41,32 @@ void Test_Task(void const * argument)
 		
 		//电机检验代码
 		#if MOTOR_TEST
-		for (uint8_t i = 0; i < 7; i++)
-			{
-				motor_info[i].set_voltage  = pid_calc(&motor_pid[i], target_speed , motor_info[i].rotor_angle);
-			}
+		MPU6500_GET_DATA();
+//		for (uint8_t i = 0; i < 7; i++)
+//			{
+//				motor_info[i].set_voltage  = pid_calc(&motor_pid[i], target_speed , motor_info[i].rotor_angle);
+//			}
 	
+		motor_info[4].set_voltage = pid_calc(&motor_pid[4], target_speed , motor_info[4].rotor_angle);//imu.pit
+//		motor_info[4].set_voltage=PID_Calc(&motor_pid[4], target_speed , motor_info[4].rotor_angle, imu.pit);
+
 		printf("In Chassis_Task's loop\r\n");
 
 		set_motor_voltage(0, 													//设置电机速度
 												motor_info[0].rotor_angle, 
 												motor_info[1].rotor_angle, 
 												motor_info[2].rotor_angle, 
-												motor_info[4].rotor_angle);
+												motor_info[4].set_voltage);
 
 
-		wave_form_data[0] = motor_info[0].rotor_speed;
-    wave_form_data[1] = motor_info[1].rotor_speed;
-		wave_form_data[2] = motor_info[2].rotor_angle;
-		wave_form_data[3] = motor_info[3].rotor_speed;
-		
-		wave_form_data[4] = motor_info[4].rotor_angle;
-    wave_form_data[5] = motor_info[5].rotor_speed;
-		wave_form_data[6] = motor_info[6].rotor_speed;
+		wave_form_data[0] = motor_info[4].rotor_speed;
+    wave_form_data[1] = motor_info[4].set_voltage;
+		wave_form_data[2] = motor_info[4].rotor_angle;
+		wave_form_data[3] = imu.pit*1000;
+//		
+//		wave_form_data[4] = motor_info[4].rotor_angle;
+//    wave_form_data[5] = motor_info[5].rotor_speed;
+//		wave_form_data[6] = motor_info[6].rotor_speed;
 		
 		shanwai_send_wave_form();
     osDelay(10);

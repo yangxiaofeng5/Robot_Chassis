@@ -16,9 +16,8 @@ robot_chassis_test3\test_task.o: ../Middlewares/Third_Party/FreeRTOS/Source/incl
 robot_chassis_test3\test_task.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h
 robot_chassis_test3\test_task.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h
 robot_chassis_test3\test_task.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h
-robot_chassis_test3\test_task.o: ..\Hardware\Bsp-can\bsp_can.h
-robot_chassis_test3\test_task.o: ../Inc/can.h
-robot_chassis_test3\test_task.o: ../Inc/main.h
+robot_chassis_test3\test_task.o: ..\Hardware\IMU\bsp_imu.h
+robot_chassis_test3\test_task.o: ..\Hardware\IMU\mytype.h
 robot_chassis_test3\test_task.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h
 robot_chassis_test3\test_task.o: ../Inc/stm32f4xx_hal_conf.h
 robot_chassis_test3\test_task.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h
@@ -50,6 +49,13 @@ robot_chassis_test3\test_task.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_h
 robot_chassis_test3\test_task.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h
 robot_chassis_test3\test_task.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
 robot_chassis_test3\test_task.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
+robot_chassis_test3\test_task.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+robot_chassis_test3\test_task.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+robot_chassis_test3\test_task.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+robot_chassis_test3\test_task.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+robot_chassis_test3\test_task.o: ..\Hardware\Bsp-can\bsp_can.h
+robot_chassis_test3\test_task.o: ../Inc/can.h
+robot_chassis_test3\test_task.o: ../Inc/main.h
 robot_chassis_test3\test_task.o: ..\Hardware\DJI_Remote\dji_remote.h
 robot_chassis_test3\test_task.o: ../Inc/main.h
 robot_chassis_test3\test_task.o: ../Inc/usart.h

@@ -42,3 +42,8 @@ robot_chassis_test3\pid.o: ..\Hardware\Bsp-can\bsp_can.h
 robot_chassis_test3\pid.o: ../Inc/can.h
 robot_chassis_test3\pid.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 robot_chassis_test3\pid.o: ../Inc/tim.h
+robot_chassis_test3\pid.o: ..\APP\User_lib\User_lib.h
+robot_chassis_test3\pid.o: ..\DSB_LIB\Include\arm_math.h
+robot_chassis_test3\pid.o: ../Drivers/CMSIS/Include/core_cm4.h
+robot_chassis_test3\pid.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+robot_chassis_test3\pid.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h

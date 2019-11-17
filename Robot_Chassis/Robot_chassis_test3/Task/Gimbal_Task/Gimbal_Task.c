@@ -38,7 +38,7 @@ static void Gimbal_PID_clear(Gimbal_PID_t *gimbal_pid_clear);
 
 void Gimbal_Task(void const * argument)
 {
-//	printf("In Gimbal_Task!\n");
+	printf("In Gimbal_Task!\n");
 	  //等待陀螺仪任务更新陀螺仪数据
     osDelay(GIMBAL_TASK_INIT_TIME);
 	  //云台初始化
@@ -51,7 +51,12 @@ void Gimbal_Task(void const * argument)
 		GIMBAL_Mode_Change_Control_Transit(&gimbal_control); //控制模式切换 控制数据过渡
     GIMBAL_Feedback_Update(&gimbal_control);             //云台数据反馈
     GIMBAL_Set_Contorl(&gimbal_control);                 //设置云台控制量
-    GIMBAL_Control_loop(&gimbal_control);                //云台控制PID计算		
+    GIMBAL_Control_loop(&gimbal_control);                //云台控制PID计算	
+//		set_motor_voltage(0, 													//设置电机速度
+//												0, 
+//												0, 
+//												0, 
+//												gimbal_control.gimbal_pitch_motor.given_current);			
 		osDelay (10);
 	}
 }
@@ -266,6 +271,7 @@ static void GIMBAL_Set_Contorl(Gimbal_Control_t *gimbal_set_control)
         //enconde模式下，电机编码角度控制
         GIMBAL_relative_angle_limit(&gimbal_set_control->gimbal_pitch_motor, add_pitch_angle);
     }
+		
 }
 
 //陀螺仪 控制量限制
@@ -367,8 +373,13 @@ static void gimbal_motor_absolute_angle_control(Gimbal_Motor_t *gimbal_motor)
         return;
     }
     //角度环，速度环串级pid调试
-    gimbal_motor->motor_gyro_set = GIMBAL_PID_Calc(&gimbal_motor->gimbal_motor_absolute_angle_pid, gimbal_motor->absolute_angle, gimbal_motor->absolute_angle_set, gimbal_motor->motor_gyro);
-    gimbal_motor->current_set = pid_calc(&gimbal_motor->gimbal_motor_gyro_pid, gimbal_motor->motor_gyro_set,gimbal_motor->motor_gyro);
+    gimbal_motor->motor_gyro_set = GIMBAL_PID_Calc(&gimbal_motor->gimbal_motor_absolute_angle_pid, 
+																										gimbal_motor->absolute_angle, 
+																										gimbal_motor->absolute_angle_set, 
+																										gimbal_motor->motor_gyro);
+    gimbal_motor->current_set = pid_calc(&gimbal_motor->gimbal_motor_gyro_pid, 
+																					gimbal_motor->motor_gyro_set,
+																					gimbal_motor->motor_gyro);
     //控制值赋值
     gimbal_motor->given_current = (int16_t)(gimbal_motor->current_set);
 }
@@ -381,8 +392,13 @@ static void gimbal_motor_relative_angle_control(Gimbal_Motor_t *gimbal_motor)
     }
 
     //角度环，速度环串级pid调试
-    gimbal_motor->motor_gyro_set = GIMBAL_PID_Calc(&gimbal_motor->gimbal_motor_relative_angle_pid, gimbal_motor->relative_angle, gimbal_motor->relative_angle_set, gimbal_motor->motor_gyro);
-    gimbal_motor->current_set = pid_calc(&gimbal_motor->gimbal_motor_gyro_pid, gimbal_motor->motor_gyro_set, gimbal_motor->motor_gyro);
+    gimbal_motor->motor_gyro_set = GIMBAL_PID_Calc(&gimbal_motor->gimbal_motor_relative_angle_pid, 
+																										gimbal_motor->relative_angle, 
+																										gimbal_motor->relative_angle_set, 
+																										gimbal_motor->motor_gyro);
+    gimbal_motor->current_set = pid_calc(&gimbal_motor->gimbal_motor_gyro_pid, 
+																					gimbal_motor->motor_gyro_set, 
+																					gimbal_motor->motor_gyro);
     //控制值赋值
     gimbal_motor->given_current = (int16_t)(gimbal_motor->current_set);
 }

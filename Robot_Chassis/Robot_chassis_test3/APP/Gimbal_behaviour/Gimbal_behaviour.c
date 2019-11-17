@@ -354,15 +354,15 @@ static void gimbal_behavour_set(Gimbal_Control_t *gimbal_mode_set)
     }
 
     //开关控制 云台状态
-    if (switch_is_down(gimbal_mode_set->gimbal_rc_ctrl->ch1))
+    if (switch_is_down(gimbal_mode_set->gimbal_rc_ctrl->switch_left))
     {
         gimbal_behaviour = GIMBAL_ZERO_FORCE;
     }
-    else if (switch_is_mid(gimbal_mode_set->gimbal_rc_ctrl->ch1))
+    else if (switch_is_mid(gimbal_mode_set->gimbal_rc_ctrl->switch_left))
     {
         gimbal_behaviour = GIMBAL_RELATIVE_ANGLE;
     }
-    else if (switch_is_up(gimbal_mode_set->gimbal_rc_ctrl->ch1))
+    else if (switch_is_up(gimbal_mode_set->gimbal_rc_ctrl->switch_left))
     {
         gimbal_behaviour = GIMBAL_ABSOLUTE_ANGLE;
     }

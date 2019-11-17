@@ -171,8 +171,13 @@ void StartTask(void const * argument)
 
   /* USER CODE BEGIN StartTask */
 		portENTER_CRITICAL();
+	/************程序测试任务**************/
+	#if SYSTEM_TEST
+		osThreadDef(vTest_Task, Test_Task, osPriorityNormal, 0, 128);
+		vTest_TaskHandle = osThreadCreate(osThread(vTest_Task), NULL);
+	#else
 	/************初始化任务**************/
-  osThreadDef(vInitial_Task, Initial_Task, osPriorityNormal, 0, 128);
+  osThreadDef(vInitial_Task, Initial_Task, osPriorityRealtime, 0, 128);
   vInitial_TaskHandle = osThreadCreate(osThread(vInitial_Task), NULL);
 
 	/************底盘任务****************/
@@ -199,11 +204,8 @@ void StartTask(void const * argument)
   osThreadDef(vProtect_Task, Protect_Task, osPriorityLow, 0, 128);
   vProtect_TaskHandle = osThreadCreate(osThread(vProtect_Task), NULL);
 	
-			/************程序调试任务**************/
-	#if SYSTEM_TEST
-		osThreadDef(vTest_Task, Test_Task, osPriorityNormal, 0, 128);
-		vTest_TaskHandle = osThreadCreate(osThread(vTest_Task), NULL);
 	#endif
+
 
 	vTaskDelete(vStart_TaskHandle); //删除开始任务
   portEXIT_CRITICAL();
