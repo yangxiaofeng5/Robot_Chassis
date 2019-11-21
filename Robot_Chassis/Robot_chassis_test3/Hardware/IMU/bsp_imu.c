@@ -20,6 +20,7 @@
 
 #define BOARD_DOWN (1)   
 #define IST8310
+#define MPU_TEMP_CONTROL 1 //启用陀螺仪温漂控制
 #define MPU_HSPI hspi5
 #define MPU_NSS_LOW HAL_GPIO_WritePin(GPIOF, GPIO_PIN_6, GPIO_PIN_RESET)
 #define MPU_NSS_HIGH HAL_GPIO_WritePin(GPIOF, GPIO_PIN_6, GPIO_PIN_SET)
@@ -46,7 +47,7 @@ uint8_t               ist_buff[6];                           /* buffer to save I
 mpu_data_t            mpu_data;
 imu_t                 imu={0};
 
-static fp32 INS_gyro[3] = {0.0f, 0.0f, 0.0f};//rad/s
+static fp32 INS_gyro[3] = {0.0f, 0.0f, 0.0f};				//rad/s
 static fp32 INS_accel[3] = {0.0f, 0.0f, 0.0f};
 static fp32 INS_Angle[3] = {0.0f, 0.0f, 0.0f};      //欧拉角 单位 rad
 
@@ -289,6 +290,7 @@ void ist8310_get_data(uint8_t* buff)
     mpu_read_bytes(MPU6500_EXT_SENS_DATA_00, buff, 6); 
 }
 
+//这里pit rol yaw的顺序需要由实际开发板的安装情况来确定
 void MPU_Transfer(void)
 {
 	INS_gyro[0] = imu.wx;
@@ -299,9 +301,9 @@ void MPU_Transfer(void)
 	INS_accel[1] = imu.ay;
 	INS_accel[2] = imu.az;
 	
-	INS_Angle[0] = imu.rol;
+	INS_Angle[0] = imu.yaw;
 	INS_Angle[1] = imu.pit;
-	INS_Angle[2] = imu.yaw;
+	INS_Angle[2] = imu.rol;
 }
 
 /**
@@ -336,11 +338,12 @@ void mpu_get_data()
 		
 		MPU_Transfer();
 		
+		#if MPU_TEMP_CONTROL
 		if(imu.temp >= 50||imu.temp <= 55)  //陀螺仪温度控制
 			MPU6500_PWM_TEMPERATURE_SET(0);
 		else
 			MPU6500_PWM_TEMPERATURE_SET(4000);
-		
+		#endif
 }
 
 

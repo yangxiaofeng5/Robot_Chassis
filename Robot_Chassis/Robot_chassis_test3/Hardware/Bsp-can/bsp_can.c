@@ -66,9 +66,9 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
   {
     can_cnt ++;
     uint8_t index = rx_header.StdId - FEEDBACK_ID_BASE;                  // get motor index by can_id
-    motor_info[index].rotor_angle    = ((rx_data[0] << 8) | rx_data[1]);
-    motor_info[index].rotor_speed    = ((rx_data[2] << 8) | rx_data[3]);
-    motor_info[index].torque_current = ((rx_data[4] << 8) | rx_data[5]);
+    motor_info[index].rotor_angle    = ((rx_data[0] << 8) | rx_data[1]);//机械角度
+    motor_info[index].rotor_speed    = ((rx_data[2] << 8) | rx_data[3]);//转速
+    motor_info[index].torque_current = ((rx_data[4] << 8) | rx_data[5]);//转矩
     motor_info[index].temp           =   rx_data[6];
   }
   if (can_cnt == 500)
@@ -115,12 +115,12 @@ const moto_info_t *get_Chassis_Motor_Measure_Point(uint8_t i)
 //返回yaw电机变量地址，通过指针方式获取原始数据
 const moto_info_t *get_Yaw_Gimbal_Motor_Measure_Point(void)
 {
-    return &motor_info[MOTOR_4_YAW];//moto_info_t motor_info[MOTOR_MAX_NUM]={4096};中的MOTOR_MAX_NUM的数字4代表yaw电机
+    return &motor_info[MOTOR_4_YAW];//moto_info_t motor_info[MOTOR_MAX_NUM]={4096};中的MOTOR_MAX_NUM的数字7代表yaw电机
 }
 //返回pitch电机变量地址，通过指针方式获取原始数据
 const moto_info_t *get_Pitch_Gimbal_Motor_Measure_Point(void)
 {
-    return &motor_info[MOTOR_5_PITCH];//中的MOTOR_MAX_NUM的数字5代表yaw电机
+    return &motor_info[MOTOR_5_PITCH];//中的MOTOR_MAX_NUM的数字5代表pitch电机
 }
 
 //返回trigger电机变量地址，通过指针方式获取原始数据

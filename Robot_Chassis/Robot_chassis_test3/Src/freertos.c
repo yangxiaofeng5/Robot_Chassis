@@ -35,7 +35,8 @@
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
-#define SYSTEM_TEST 0 //测试程序，用来测试各个模块的状态通过0 1来控制
+#define SYSTEM_TEST 1 			//测试程序，用来测试各个模块的状态通过0 1来控制
+#define SYSTEM_PROTCET 0		//保护程序开启控制0 1控制
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
@@ -158,16 +159,6 @@ void MX_FREERTOS_Init(void) {
 /* USER CODE END Header_StartTask */
 void StartTask(void const * argument)
 {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 
   /* USER CODE BEGIN StartTask */
 		portENTER_CRITICAL();
@@ -177,35 +168,35 @@ void StartTask(void const * argument)
 		vTest_TaskHandle = osThreadCreate(osThread(vTest_Task), NULL);
 	#else
 	/************初始化任务**************/
-  osThreadDef(vInitial_Task, Initial_Task, osPriorityRealtime, 0, 128);
-  vInitial_TaskHandle = osThreadCreate(osThread(vInitial_Task), NULL);
+		osThreadDef(vInitial_Task, Initial_Task, osPriorityRealtime, 0, 128);
+		vInitial_TaskHandle = osThreadCreate(osThread(vInitial_Task), NULL);
 
 	/************底盘任务****************/
-  osThreadDef(vChassis_Task, Chassis_Task, osPriorityNormal, 0, 128);
-  vChassis_TaskHandle = osThreadCreate(osThread(vChassis_Task), NULL);
-	
+		osThreadDef(vChassis_Task, Chassis_Task, osPriorityNormal, 0, 128);
+		vChassis_TaskHandle = osThreadCreate(osThread(vChassis_Task), NULL);
+
 	/************云台任务****************/
-  osThreadDef(vGimbal_Task, Gimbal_Task, osPriorityAboveNormal, 0, 128);
-  vGimbal_TaskHandle = osThreadCreate(osThread(vGimbal_Task), NULL);
-	
+		osThreadDef(vGimbal_Task, Gimbal_Task, osPriorityAboveNormal, 0, 128);
+		vGimbal_TaskHandle = osThreadCreate(osThread(vGimbal_Task), NULL);
+
 	/************拨盘任务****************/
-	osThreadDef(vRevolver_Task, Revolver_Task, osPriorityHigh, 0, 128);
-  vRevolver_TaskHandle = osThreadCreate(osThread(vRevolver_Task), NULL);
+		osThreadDef(vRevolver_Task, Revolver_Task, osPriorityHigh, 0, 128);
+		vRevolver_TaskHandle = osThreadCreate(osThread(vRevolver_Task), NULL);
 
 	/************10ms任务**************/
-  osThreadDef(vTask_10ms, Task_10ms, osPriorityHigh, 0, 128);
-  vTask_10msHandle = osThreadCreate(osThread(vTask_10ms), NULL);
-	
-	/************任务失控任务**************/
-	osThreadDef(vOut_Control, Out_Control, osPriorityHigh, 0, 128);
-  vOut_ControlHandle = osThreadCreate(osThread(vOut_Control), NULL);
-
-	/************失控任务控制**************/
-  osThreadDef(vProtect_Task, Protect_Task, osPriorityLow, 0, 128);
-  vProtect_TaskHandle = osThreadCreate(osThread(vProtect_Task), NULL);
-	
+		osThreadDef(vTask_10ms, Task_10ms, osPriorityHigh, 0, 128);
+		vTask_10msHandle = osThreadCreate(osThread(vTask_10ms), NULL);
 	#endif
 
+	#if SYSTEM_PROTCET
+	/************任务失控任务**************/
+		osThreadDef(vOut_Control, Out_Control, osPriorityHigh, 0, 128);
+		vOut_ControlHandle = osThreadCreate(osThread(vOut_Control), NULL);
+
+	/************失控任务控制**************/
+		osThreadDef(vProtect_Task, Protect_Task, osPriorityLow, 0, 128);
+		vProtect_TaskHandle = osThreadCreate(osThread(vProtect_Task), NULL);
+	#endif
 
 	vTaskDelete(vStart_TaskHandle); //删除开始任务
   portEXIT_CRITICAL();
@@ -254,6 +245,7 @@ void Protect_Task(void const * argument)
 		}
     osDelayUntil (&System_Current_Time,50);     //绝对延时50ms
   }
+
   /* USER CODE END Protect_Task */
 }
 

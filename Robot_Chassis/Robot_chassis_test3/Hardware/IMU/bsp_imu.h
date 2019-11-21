@@ -16,7 +16,7 @@
 #define MPU_DELAY(x) HAL_Delay(x)
 
 //获取姿态角指针地址后，对应姿态角的地址偏移量 fp32类型
-//融合了官方程序需要的东西
+//融合了官方程序需要的东西，这里对应发地址偏移量
 #define INS_YAW_ADDRESS_OFFSET 0
 #define INS_PITCH_ADDRESS_OFFSET 1
 #define INS_ROLL_ADDRESS_OFFSET 2

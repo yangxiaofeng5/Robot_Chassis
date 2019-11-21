@@ -17,11 +17,6 @@ void Initial_Task(void const * argument)
 	
 	MPU6500_INITIAL();//陀螺仪初始化
 	
-	//底盘电机pid参数初始化
-	for (uint8_t i = 0; i < 7; i++)
-  {
-    pid_init(&motor_pid[i], 1.5, 0.1, 0, 5000, 16384); 
-  }
 	oled_clear(Pen_Clear);
 	oled_refresh_gram();
 	
