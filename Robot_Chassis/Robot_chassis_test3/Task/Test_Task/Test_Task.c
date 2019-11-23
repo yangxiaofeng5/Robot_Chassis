@@ -9,15 +9,16 @@
 #define MOTOR_TEST 1									//电机测试代码
 #define MPU6500_TSES 0								//陀螺仪测试代码
 
-#define Pitch_RC_SENABE -0.000006f    //遥控器系数
-#define Motor_Ecd_to_Rad 0.000766990394f //      2*  PI  /8192
+//#define Pitch_RC_SENABE -0.000006f    //遥控器系数
+//#define Motor_Ecd_to_Rad 0.000766990394f //      2*  PI  /8192
 
 //任务运行返回参数所需的变量
 uint8_t pcWriteBuffer[200];
 uint8_t ulHighFrequencyTimerTicks;
 
-moto_info_t motor_angle_info[4];
-moto_info_t motor_speed_info[4];
+extern moto_info_t motor_info[7];
+//moto_info_t motor_angle_info[4];
+//moto_info_t motor_speed_info[4];
 
 pid_struct_t motor_angle_pid[4];
 pid_struct_t motor_speed_pid[4];
@@ -64,40 +65,40 @@ void Test_Task(void const * argument)
 													0, 
 													0, 
 													0);
-		wave_form_data[4] = target_speed1*1000.0f;
+		wave_form_data[4] = motor_info[4].rotor_angle;
 		wave_form_data[3] = target_speed2*1000.0f;
-		wave_form_data[2] = -imu.wx*1000;
-		wave_form_data[1] = -imu.wz*1000;
-//    wave_form_data[5] = motor_info[5].rotor_speed;
-//		wave_form_data[6] = motor_info[6].rotor_speed;
+		wave_form_data[2] = -imu.rol;
+		wave_form_data[1] = -imu.pit*1000;
+
 			shanwai_send_wave_form();
 		}
 		else
 		{
-		
-				motor_angle_info[0].set_voltage = (int16_t)pid_calc(&motor_speed_pid[0], 
+//				if( remote_control.ch4 != 0)
+				motor_info[4].set_voltage = (int16_t)pid_calc(&motor_speed_pid[4], 
 																						target_speed1,
 																						imu.wx);
-//				motor_speed_info[0].current_set = (int16_t)pid_calc(&motor_angle_pid[0], 
-//																						motor_angle_info[0].set_voltage, 
-//																						motor_angle_info[0].rotor_angle);
-//			
-				motor_angle_info[1].set_voltage = (int16_t)pid_calc(&motor_speed_pid[1], 
-																						target_speed2,
-																						-imu.wz);
+//				else
+//				motor_info[4].set_voltage = (int16_t)pid_calc(&motor_angle_pid[4], 
+//																						-(motor_info[4].rotor_angle-2000)/0.04416, 
+//																						-imu.rol);
+			
+//				motor_info[1].set_voltage = (int16_t)pid_calc(&motor_speed_pid[1], 
+//																						target_speed2,
+//																						-imu.wz);
 			printf("In Chassis_Task's loop\r\n");
 
 			set_motor_voltage(0, 													//设置电机速度
-													-motor_angle_info[0].set_voltage, 
-													motor_angle_info[1].set_voltage, 
+													-motor_info[4].set_voltage, 
+													/*motor_info[1].set_voltage*/0, 
 													0, 
 													0);
 
 
-			wave_form_data[0] = motor_angle_info[0].rotor_angle*100;
-			wave_form_data[1] = motor_angle_info[0].torque_current;
-			wave_form_data[2] = -motor_angle_info[0].rotor_speed;
-			wave_form_data[3] = -imu.wx*1000;
+			wave_form_data[0] = motor_info[4].rotor_angle*100;
+			wave_form_data[1] = motor_info[4].torque_current;
+			wave_form_data[2] = -motor_info[4].rotor_speed;
+			wave_form_data[3] = -imu.rol*1000;
 			shanwai_send_wave_form();
 		}
     osDelay(10);

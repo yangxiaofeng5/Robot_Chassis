@@ -16,6 +16,24 @@
 	 
 //任务初始化 空闲一段时间
 #define GIMBAL_TASK_INIT_TIME 201
+
+//电机是否反装
+#define PITCH_TURN 0
+#define YAW_TURN 0
+	 
+//电机码盘值最大以及中值
+#define Half_ecd_range 4096
+#define ecd_range 8191
+//云台电机的最初角度
+#define YAW_OFFEST 0				//YAW轴中值     单位都为rad
+#define PITCH_OFFEST 0			//pitch轴中值
+#define YAW_MAX_ANGLE 0			//最大最小值
+#define YAW_MIN_ANGLE 0
+#define PITCH_MAX_ANGLE 0
+#define PITCH_MIN_ANGLE 0
+
+
+
 	 
 //pitch 速度环 PID参数以及 PID最大输出，积分输出
 #define PITCH_SPEED_PID_KP 2000.0f
@@ -91,11 +109,7 @@
 
 #define GIMBAL_CALI_START_STEP GIMBAL_CALI_PITCH_MAX_STEP
 #define GIMBAL_CALI_END_STEP 5
-	 
-//电机码盘值最大以及中值
-#define Half_ecd_range 4096
-#define ecd_range 8191	 
-	 
+
 //遥控器输入死区，因为遥控器存在差异，摇杆在中间，其值不一定为零
 #define RC_deadband 10
 //yaw，pitch角度与遥控器输入比例
@@ -116,9 +130,9 @@
 	 
 typedef enum
 {
-    GIMBAL_MOTOR_RAW = 0, //电机原始值控制
-    GIMBAL_MOTOR_GYRO,    //电机陀螺仪角度控制
-    GIMBAL_MOTOR_ENCONDE, //电机编码值角度控制
+    GIMBAL_MOTOR_RAW      = 0, //电机原始值控制
+    GIMBAL_MOTOR_GYRO     = 1, //电机陀螺仪角度控制
+    GIMBAL_MOTOR_ENCONDE  = 2, //电机编码值角度控制
 } gimbal_motor_mode_e;
 	 
 typedef struct
@@ -150,8 +164,8 @@ typedef struct
     pid_struct_t gimbal_motor_gyro_pid;
     gimbal_motor_mode_e gimbal_motor_mode;
     gimbal_motor_mode_e last_gimbal_motor_mode;
-    uint16_t offset_ecd;
-    fp32 max_relative_angle; //rad
+    uint16_t offset_ecd;//相对角中值
+    fp32 max_relative_angle; //rad//这两个值直接测出来，换电机的时候也要测注意都是 角度值
     fp32 min_relative_angle; //rad
 
     fp32 relative_angle;     //rad
@@ -166,7 +180,19 @@ typedef struct
     int16_t given_current;
 
 } Gimbal_Motor_t;
-	 
+	
+//云台设备的校准数据
+typedef struct
+{
+    uint16_t yaw_offset;
+    uint16_t pitch_offset;
+    fp32 yaw_max_angle;
+    fp32 yaw_min_angle;
+    fp32 pitch_max_angle;
+    fp32 pitch_min_angle;
+} gimbal_cali_t;
+
+//云台设备行程设置数据
 typedef struct
 {
     fp32 max_yaw;
@@ -178,6 +204,7 @@ typedef struct
     uint16_t max_pitch_ecd;
     uint16_t min_pitch_ecd;
     uint8_t step;
+		gimbal_cali_t *local_cali_t;
 } Gimbal_Cali_t;
 
 typedef struct
@@ -192,7 +219,8 @@ typedef struct
 
 
 	 
-	 
+extern const Gimbal_Motor_t *get_yaw_motor_point(void);
+extern const Gimbal_Motor_t *get_pitch_motor_point(void);	 
 extern osThreadId vGimbal_TaskHandle;
 	 
 void Gimbal_Task(void const * argument);

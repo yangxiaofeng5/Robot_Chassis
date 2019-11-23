@@ -37,7 +37,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x5DB0FACC)
 I (..\Hardware\DJI_Remote\dji_remote.h)(0x5DC66082)
 I (../Inc/usart.h)(0x5DC69DD0)
 I (..\APP\robomaster_vcan\robomaster_vcan.h)(0x5CA86BED)
-I (..\Hardware\Bsp-can\bsp_can.h)(0x5DD3F544)
+I (..\Hardware\Bsp-can\bsp_can.h)(0x5DD64B28)
 I (../Inc/can.h)(0x5DC69DCE)
 I (F:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x588B8344)
 I (../Inc/tim.h)(0x5DC69DD0)
@@ -96,7 +96,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x5DB0FACC)
 I (..\Hardware\DJI_Remote\dji_remote.h)(0x5DC66082)
 I (../Inc/usart.h)(0x5DC69DD0)
 I (..\APP\robomaster_vcan\robomaster_vcan.h)(0x5CA86BED)
-I (..\Hardware\Bsp-can\bsp_can.h)(0x5DD3F544)
+I (..\Hardware\Bsp-can\bsp_can.h)(0x5DD64B28)
 I (../Inc/can.h)(0x5DC69DCE)
 I (F:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x588B8344)
 I (../Inc/tim.h)(0x5DC69DD0)
@@ -138,7 +138,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x5DB0FACC)
 I (..\Hardware\DJI_Remote\dji_remote.h)(0x5DC66082)
 I (../Inc/usart.h)(0x5DC69DD0)
 I (..\APP\robomaster_vcan\robomaster_vcan.h)(0x5CA86BED)
-I (..\Hardware\Bsp-can\bsp_can.h)(0x5DD3F544)
+I (..\Hardware\Bsp-can\bsp_can.h)(0x5DD64B28)
 I (F:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x588B8344)
 I (../Inc/tim.h)(0x5DC69DD0)
 F (../Src/dma.c)(0x5DC69DCE)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ..\Drivers\CMSIS\Lib\ARM -I ..\DSB_LIB -I ..\DSB_LIB\Include -I ..\APP\User_lib -I ..\APP\robomaster_vcan -I ..\APP\chassis_behaviour -I ..\APP\Gimbal_behaviour -I ..\Hardware\Bsp-can -I ..\Hardware\DJI_Remote -I ..\Hardware\oled -I ..\Hardware\IMU -I ..\Task\Initial_Task -I ..\Task\Chassis_Task -I ..\Task\Gimbal_Task -I ..\Task\Revolver_Task -I ..\Task\Test_Task-I.\RTE\_Robot_chassis_test3-IF:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IF:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F427xx -DUSE_HAL_DRIVER -DSTM32F427xx -DUSE_HAL_DRIVER -DUSE_STDPERIPH_DRIVER -DARM_MATH_CM4 -D__CC_ARM -DARM_MATH_M -D_GUNC_-o robot_chassis_test3\dma.o --omf_browse robot_chassis_test3\dma.crf --depend robot_chassis_test3\dma.d)
@@ -179,11 +179,11 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x5DB0FACC)
 I (..\Hardware\DJI_Remote\dji_remote.h)(0x5DC66082)
 I (../Inc/usart.h)(0x5DC69DD0)
 I (..\APP\robomaster_vcan\robomaster_vcan.h)(0x5CA86BED)
-I (..\Hardware\Bsp-can\bsp_can.h)(0x5DD3F544)
+I (..\Hardware\Bsp-can\bsp_can.h)(0x5DD64B28)
 I (../Inc/can.h)(0x5DC69DCE)
 I (F:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x588B8344)
 I (../Inc/tim.h)(0x5DC69DD0)
-F (../Src/freertos.c)(0x5DD5DA91)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ..\Drivers\CMSIS\Lib\ARM -I ..\DSB_LIB -I ..\DSB_LIB\Include -I ..\APP\User_lib -I ..\APP\robomaster_vcan -I ..\APP\chassis_behaviour -I ..\APP\Gimbal_behaviour -I ..\Hardware\Bsp-can -I ..\Hardware\DJI_Remote -I ..\Hardware\oled -I ..\Hardware\IMU -I ..\Task\Initial_Task -I ..\Task\Chassis_Task -I ..\Task\Gimbal_Task -I ..\Task\Revolver_Task -I ..\Task\Test_Task-I.\RTE\_Robot_chassis_test3-IF:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IF:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F427xx -DUSE_HAL_DRIVER -DSTM32F427xx -DUSE_HAL_DRIVER -DUSE_STDPERIPH_DRIVER -DARM_MATH_CM4 -D__CC_ARM -DARM_MATH_M -D_GUNC_-o robot_chassis_test3\freertos.o --omf_browse robot_chassis_test3\freertos.crf --depend robot_chassis_test3\freertos.d)
+F (../Src/freertos.c)(0x5DD649EC)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ..\Drivers\CMSIS\Lib\ARM -I ..\DSB_LIB -I ..\DSB_LIB\Include -I ..\APP\User_lib -I ..\APP\robomaster_vcan -I ..\APP\chassis_behaviour -I ..\APP\Gimbal_behaviour -I ..\Hardware\Bsp-can -I ..\Hardware\DJI_Remote -I ..\Hardware\oled -I ..\Hardware\IMU -I ..\Task\Initial_Task -I ..\Task\Chassis_Task -I ..\Task\Gimbal_Task -I ..\Task\Revolver_Task -I ..\Task\Test_Task-I.\RTE\_Robot_chassis_test3-IF:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IF:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F427xx -DUSE_HAL_DRIVER -DSTM32F427xx -DUSE_HAL_DRIVER -DUSE_STDPERIPH_DRIVER -DARM_MATH_CM4 -D__CC_ARM -DARM_MATH_M -D_GUNC_-o robot_chassis_test3\freertos.o --omf_browse robot_chassis_test3\freertos.crf --depend robot_chassis_test3\freertos.d)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h)(0x5DB0FA17)
 I (F:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x588B8344)
 I (F:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x588B8344)
@@ -229,7 +229,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x5DB0FACC)
 I (..\Hardware\DJI_Remote\dji_remote.h)(0x5DC66082)
 I (../Inc/usart.h)(0x5DC69DD0)
 I (..\APP\robomaster_vcan\robomaster_vcan.h)(0x5CA86BED)
-I (..\Hardware\Bsp-can\bsp_can.h)(0x5DD3F544)
+I (..\Hardware\Bsp-can\bsp_can.h)(0x5DD64B28)
 I (../Inc/can.h)(0x5DC69DCE)
 I (F:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x588B8344)
 I (../Inc/tim.h)(0x5DC69DD0)
@@ -280,7 +280,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x5DB0FACC)
 I (..\Hardware\DJI_Remote\dji_remote.h)(0x5DC66082)
 I (../Inc/usart.h)(0x5DC69DD0)
 I (..\APP\robomaster_vcan\robomaster_vcan.h)(0x5CA86BED)
-I (..\Hardware\Bsp-can\bsp_can.h)(0x5DD3F544)
+I (..\Hardware\Bsp-can\bsp_can.h)(0x5DD64B28)
 I (../Inc/can.h)(0x5DC69DCE)
 I (F:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x588B8344)
 I (../Inc/tim.h)(0x5DC69DD0)
@@ -322,7 +322,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x5DB0FACC)
 I (..\Hardware\DJI_Remote\dji_remote.h)(0x5DC66082)
 I (../Inc/usart.h)(0x5DC69DD0)
 I (..\APP\robomaster_vcan\robomaster_vcan.h)(0x5CA86BED)
-I (..\Hardware\Bsp-can\bsp_can.h)(0x5DD3F544)
+I (..\Hardware\Bsp-can\bsp_can.h)(0x5DD64B28)
 I (../Inc/can.h)(0x5DC69DCE)
 I (F:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x588B8344)
 F (../Src/usart.c)(0x5DC69DD0)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ..\Drivers\CMSIS\Lib\ARM -I ..\DSB_LIB -I ..\DSB_LIB\Include -I ..\APP\User_lib -I ..\APP\robomaster_vcan -I ..\APP\chassis_behaviour -I ..\APP\Gimbal_behaviour -I ..\Hardware\Bsp-can -I ..\Hardware\DJI_Remote -I ..\Hardware\oled -I ..\Hardware\IMU -I ..\Task\Initial_Task -I ..\Task\Chassis_Task -I ..\Task\Gimbal_Task -I ..\Task\Revolver_Task -I ..\Task\Test_Task-I.\RTE\_Robot_chassis_test3-IF:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IF:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F427xx -DUSE_HAL_DRIVER -DSTM32F427xx -DUSE_HAL_DRIVER -DUSE_STDPERIPH_DRIVER -DARM_MATH_CM4 -D__CC_ARM -DARM_MATH_M -D_GUNC_-o robot_chassis_test3\usart.o --omf_browse robot_chassis_test3\usart.crf --depend robot_chassis_test3\usart.d)
@@ -362,7 +362,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x5DB0FACC)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x5DB0FACC)
 I (..\Hardware\DJI_Remote\dji_remote.h)(0x5DC66082)
 I (..\APP\robomaster_vcan\robomaster_vcan.h)(0x5CA86BED)
-I (..\Hardware\Bsp-can\bsp_can.h)(0x5DD3F544)
+I (..\Hardware\Bsp-can\bsp_can.h)(0x5DD64B28)
 I (../Inc/can.h)(0x5DC69DCE)
 I (F:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x588B8344)
 I (../Inc/tim.h)(0x5DC69DD0)
@@ -403,7 +403,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x5DB0FACC)
 I (..\Hardware\DJI_Remote\dji_remote.h)(0x5DC66082)
 I (../Inc/usart.h)(0x5DC69DD0)
 I (..\APP\robomaster_vcan\robomaster_vcan.h)(0x5CA86BED)
-I (..\Hardware\Bsp-can\bsp_can.h)(0x5DD3F544)
+I (..\Hardware\Bsp-can\bsp_can.h)(0x5DD64B28)
 I (../Inc/can.h)(0x5DC69DCE)
 I (F:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x588B8344)
 I (../Inc/tim.h)(0x5DC69DD0)
@@ -454,7 +454,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x5DB0FACC)
 I (..\Hardware\DJI_Remote\dji_remote.h)(0x5DC66082)
 I (../Inc/usart.h)(0x5DC69DD0)
 I (..\APP\robomaster_vcan\robomaster_vcan.h)(0x5CA86BED)
-I (..\Hardware\Bsp-can\bsp_can.h)(0x5DD3F544)
+I (..\Hardware\Bsp-can\bsp_can.h)(0x5DD64B28)
 I (../Inc/can.h)(0x5DC69DCE)
 I (F:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x588B8344)
 I (../Inc/tim.h)(0x5DC69DD0)
@@ -1286,7 +1286,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x5DB0FACC)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x5DB0FACC)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x5DB0FACC)
 I (..\APP\robomaster_vcan\robomaster_vcan.h)(0x5CA86BED)
-I (..\Hardware\Bsp-can\bsp_can.h)(0x5DD3F544)
+I (..\Hardware\Bsp-can\bsp_can.h)(0x5DD64B28)
 I (../Inc/can.h)(0x5DC69DCE)
 I (F:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x588B8344)
 I (../Inc/tim.h)(0x5DC69DD0)
@@ -1352,7 +1352,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x5DB0FACC)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x5DB0FACC)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x5DB0FACC)
 I (..\APP\robomaster_vcan\robomaster_vcan.h)(0x5CA86BED)
-I (..\Hardware\Bsp-can\bsp_can.h)(0x5DD3F544)
+I (..\Hardware\Bsp-can\bsp_can.h)(0x5DD64B28)
 I (../Inc/can.h)(0x5DC69DCE)
 I (F:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x588B8344)
 I (../Inc/tim.h)(0x5DC69DD0)
@@ -1388,7 +1388,7 @@ I (../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h)(0x5DB0FA17)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h)(0x5DB0FA17)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h)(0x5DB0FA17)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h)(0x5DB0FA17)
-F (..\Task\Test_Task\Test_Task.c)(0x5DD5ED1E)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ..\Drivers\CMSIS\Lib\ARM -I ..\DSB_LIB -I ..\DSB_LIB\Include -I ..\APP\User_lib -I ..\APP\robomaster_vcan -I ..\APP\chassis_behaviour -I ..\APP\Gimbal_behaviour -I ..\Hardware\Bsp-can -I ..\Hardware\DJI_Remote -I ..\Hardware\oled -I ..\Hardware\IMU -I ..\Task\Initial_Task -I ..\Task\Chassis_Task -I ..\Task\Gimbal_Task -I ..\Task\Revolver_Task -I ..\Task\Test_Task-I.\RTE\_Robot_chassis_test3-IF:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IF:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F427xx -DUSE_HAL_DRIVER -DSTM32F427xx -DUSE_HAL_DRIVER -DUSE_STDPERIPH_DRIVER -DARM_MATH_CM4 -D__CC_ARM -DARM_MATH_M -D_GUNC_-o robot_chassis_test3\test_task.o --omf_browse robot_chassis_test3\test_task.crf --depend robot_chassis_test3\test_task.d)
+F (..\Task\Test_Task\Test_Task.c)(0x5DD650D4)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ..\Drivers\CMSIS\Lib\ARM -I ..\DSB_LIB -I ..\DSB_LIB\Include -I ..\APP\User_lib -I ..\APP\robomaster_vcan -I ..\APP\chassis_behaviour -I ..\APP\Gimbal_behaviour -I ..\Hardware\Bsp-can -I ..\Hardware\DJI_Remote -I ..\Hardware\oled -I ..\Hardware\IMU -I ..\Task\Initial_Task -I ..\Task\Chassis_Task -I ..\Task\Gimbal_Task -I ..\Task\Revolver_Task -I ..\Task\Test_Task-I.\RTE\_Robot_chassis_test3-IF:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IF:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F427xx -DUSE_HAL_DRIVER -DSTM32F427xx -DUSE_HAL_DRIVER -DUSE_STDPERIPH_DRIVER -DARM_MATH_CM4 -D__CC_ARM -DARM_MATH_M -D_GUNC_-o robot_chassis_test3\test_task.o --omf_browse robot_chassis_test3\test_task.crf --depend robot_chassis_test3\test_task.d)
 I (..\Task\Test_Task\Test_Task.h)(0x5DC6A295)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h)(0x5DB0FA17)
 I (F:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x588B8344)
@@ -1442,7 +1442,7 @@ I (F:\Keil_v5\ARM\ARMCC\include\stdarg.h)(0x588B8344)
 I (F:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x588B8344)
 I (F:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x588B8344)
 I (F:\Keil_v5\ARM\ARMCC\include\string.h)(0x588B8344)
-I (..\Hardware\Bsp-can\bsp_can.h)(0x5DD3F544)
+I (..\Hardware\Bsp-can\bsp_can.h)(0x5DD64B28)
 I (../Inc/can.h)(0x5DC69DCE)
 I (../Inc/main.h)(0x5DC95409)
 I (..\Hardware\DJI_Remote\dji_remote.h)(0x5DC66082)
@@ -1451,8 +1451,8 @@ I (..\APP\robomaster_vcan\robomaster_vcan.h)(0x5CA86BED)
 I (F:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x588B8344)
 I (../Inc/tim.h)(0x5DC69DD0)
 I (..\Hardware\Bsp-can\pid.h)(0x5DCD20DD)
-F (..\Task\Gimbal_Task\Gimbal_Task.c)(0x5DD547FA)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ..\Drivers\CMSIS\Lib\ARM -I ..\DSB_LIB -I ..\DSB_LIB\Include -I ..\APP\User_lib -I ..\APP\robomaster_vcan -I ..\APP\chassis_behaviour -I ..\APP\Gimbal_behaviour -I ..\Hardware\Bsp-can -I ..\Hardware\DJI_Remote -I ..\Hardware\oled -I ..\Hardware\IMU -I ..\Task\Initial_Task -I ..\Task\Chassis_Task -I ..\Task\Gimbal_Task -I ..\Task\Revolver_Task -I ..\Task\Test_Task-I.\RTE\_Robot_chassis_test3-IF:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IF:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F427xx -DUSE_HAL_DRIVER -DSTM32F427xx -DUSE_HAL_DRIVER -DUSE_STDPERIPH_DRIVER -DARM_MATH_CM4 -D__CC_ARM -DARM_MATH_M -D_GUNC_-o robot_chassis_test3\gimbal_task.o --omf_browse robot_chassis_test3\gimbal_task.crf --depend robot_chassis_test3\gimbal_task.d)
-I (..\Task\Gimbal_Task\Gimbal_Task.h)(0x5DD2A98C)
+F (..\Task\Gimbal_Task\Gimbal_Task.c)(0x5DD93911)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ..\Drivers\CMSIS\Lib\ARM -I ..\DSB_LIB -I ..\DSB_LIB\Include -I ..\APP\User_lib -I ..\APP\robomaster_vcan -I ..\APP\chassis_behaviour -I ..\APP\Gimbal_behaviour -I ..\Hardware\Bsp-can -I ..\Hardware\DJI_Remote -I ..\Hardware\oled -I ..\Hardware\IMU -I ..\Task\Initial_Task -I ..\Task\Chassis_Task -I ..\Task\Gimbal_Task -I ..\Task\Revolver_Task -I ..\Task\Test_Task-I.\RTE\_Robot_chassis_test3-IF:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IF:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F427xx -DUSE_HAL_DRIVER -DSTM32F427xx -DUSE_HAL_DRIVER -DUSE_STDPERIPH_DRIVER -DARM_MATH_CM4 -D__CC_ARM -DARM_MATH_M -D_GUNC_-o robot_chassis_test3\gimbal_task.o --omf_browse robot_chassis_test3\gimbal_task.crf --depend robot_chassis_test3\gimbal_task.d)
+I (..\Task\Gimbal_Task\Gimbal_Task.h)(0x5DD93719)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h)(0x5DB0FA17)
 I (F:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x588B8344)
 I (F:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x588B8344)
@@ -1502,7 +1502,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x5DB0FACC)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x5DB0FACC)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x5DB0FACC)
 I (..\APP\robomaster_vcan\robomaster_vcan.h)(0x5CA86BED)
-I (..\Hardware\Bsp-can\bsp_can.h)(0x5DD3F544)
+I (..\Hardware\Bsp-can\bsp_can.h)(0x5DD64B28)
 I (../Inc/can.h)(0x5DC69DCE)
 I (F:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x588B8344)
 I (../Inc/tim.h)(0x5DC69DD0)
@@ -1555,7 +1555,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x5DB0FACC)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x5DB0FACC)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x5DB0FACC)
 I (..\Hardware\DJI_Remote\dji_remote.h)(0x5DC66082)
-I (..\Hardware\Bsp-can\bsp_can.h)(0x5DD3F544)
+I (..\Hardware\Bsp-can\bsp_can.h)(0x5DD64B28)
 I (../Inc/can.h)(0x5DC69DCE)
 I (F:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x588B8344)
 I (../Inc/tim.h)(0x5DC69DD0)
@@ -1597,7 +1597,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x5DB0FACC)
 I (..\Hardware\DJI_Remote\dji_remote.h)(0x5DC66082)
 I (../Inc/usart.h)(0x5DC69DD0)
 I (..\APP\robomaster_vcan\robomaster_vcan.h)(0x5CA86BED)
-I (..\Hardware\Bsp-can\bsp_can.h)(0x5DD3F544)
+I (..\Hardware\Bsp-can\bsp_can.h)(0x5DD64B28)
 I (../Inc/can.h)(0x5DC69DCE)
 I (F:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x588B8344)
 I (../Inc/tim.h)(0x5DC69DD0)
@@ -1642,7 +1642,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x5DB0FACC)
 I (..\Hardware\DJI_Remote\dji_remote.h)(0x5DC66082)
 I (../Inc/usart.h)(0x5DC69DD0)
 I (..\APP\robomaster_vcan\robomaster_vcan.h)(0x5CA86BED)
-I (..\Hardware\Bsp-can\bsp_can.h)(0x5DD3F544)
+I (..\Hardware\Bsp-can\bsp_can.h)(0x5DD64B28)
 I (../Inc/can.h)(0x5DC69DCE)
 I (F:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x588B8344)
 I (../Inc/tim.h)(0x5DC69DD0)
@@ -1666,8 +1666,8 @@ I (..\APP\User_lib\user_lib.h)(0x5DAD9EC8)
 I (..\DSB_LIB\Include\arm_math.h)(0x5DB061AA)
 I (F:\Keil_v5\ARM\ARMCC\include\string.h)(0x588B8344)
 I (F:\Keil_v5\ARM\ARMCC\include\math.h)(0x588B8344)
-F (..\APP\Gimbal_behaviour\Gimbal_behaviour.c)(0x5DD29458)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ..\Drivers\CMSIS\Lib\ARM -I ..\DSB_LIB -I ..\DSB_LIB\Include -I ..\APP\User_lib -I ..\APP\robomaster_vcan -I ..\APP\chassis_behaviour -I ..\APP\Gimbal_behaviour -I ..\Hardware\Bsp-can -I ..\Hardware\DJI_Remote -I ..\Hardware\oled -I ..\Hardware\IMU -I ..\Task\Initial_Task -I ..\Task\Chassis_Task -I ..\Task\Gimbal_Task -I ..\Task\Revolver_Task -I ..\Task\Test_Task-I.\RTE\_Robot_chassis_test3-IF:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IF:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F427xx -DUSE_HAL_DRIVER -DSTM32F427xx -DUSE_HAL_DRIVER -DUSE_STDPERIPH_DRIVER -DARM_MATH_CM4 -D__CC_ARM -DARM_MATH_M -D_GUNC_-o robot_chassis_test3\gimbal_behaviour.o --omf_browse robot_chassis_test3\gimbal_behaviour.crf --depend robot_chassis_test3\gimbal_behaviour.d)
-I (..\Task\Gimbal_Task\Gimbal_Task.h)(0x5DD2A98C)
+F (..\APP\Gimbal_behaviour\Gimbal_behaviour.c)(0x5DD93729)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ..\Drivers\CMSIS\Lib\ARM -I ..\DSB_LIB -I ..\DSB_LIB\Include -I ..\APP\User_lib -I ..\APP\robomaster_vcan -I ..\APP\chassis_behaviour -I ..\APP\Gimbal_behaviour -I ..\Hardware\Bsp-can -I ..\Hardware\DJI_Remote -I ..\Hardware\oled -I ..\Hardware\IMU -I ..\Task\Initial_Task -I ..\Task\Chassis_Task -I ..\Task\Gimbal_Task -I ..\Task\Revolver_Task -I ..\Task\Test_Task-I.\RTE\_Robot_chassis_test3-IF:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IF:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F427xx -DUSE_HAL_DRIVER -DSTM32F427xx -DUSE_HAL_DRIVER -DUSE_STDPERIPH_DRIVER -DARM_MATH_CM4 -D__CC_ARM -DARM_MATH_M -D_GUNC_-o robot_chassis_test3\gimbal_behaviour.o --omf_browse robot_chassis_test3\gimbal_behaviour.crf --depend robot_chassis_test3\gimbal_behaviour.d)
+I (..\Task\Gimbal_Task\Gimbal_Task.h)(0x5DD93719)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h)(0x5DB0FA17)
 I (F:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x588B8344)
 I (F:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x588B8344)
@@ -1717,7 +1717,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x5DB0FACC)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x5DB0FACC)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x5DB0FACC)
 I (..\APP\robomaster_vcan\robomaster_vcan.h)(0x5CA86BED)
-I (..\Hardware\Bsp-can\bsp_can.h)(0x5DD3F544)
+I (..\Hardware\Bsp-can\bsp_can.h)(0x5DD64B28)
 I (../Inc/can.h)(0x5DC69DCE)
 I (F:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x588B8344)
 I (../Inc/tim.h)(0x5DC69DD0)
@@ -1728,8 +1728,8 @@ I (..\DSB_LIB\Include\arm_math.h)(0x5DB061AA)
 I (F:\Keil_v5\ARM\ARMCC\include\string.h)(0x588B8344)
 I (F:\Keil_v5\ARM\ARMCC\include\math.h)(0x588B8344)
 I (..\APP\User_lib\user_lib.h)(0x5DAD9EC8)
-F (..\Hardware\Bsp-can\bsp_can.c)(0x5DD5E9ED)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ..\Drivers\CMSIS\Lib\ARM -I ..\DSB_LIB -I ..\DSB_LIB\Include -I ..\APP\User_lib -I ..\APP\robomaster_vcan -I ..\APP\chassis_behaviour -I ..\APP\Gimbal_behaviour -I ..\Hardware\Bsp-can -I ..\Hardware\DJI_Remote -I ..\Hardware\oled -I ..\Hardware\IMU -I ..\Task\Initial_Task -I ..\Task\Chassis_Task -I ..\Task\Gimbal_Task -I ..\Task\Revolver_Task -I ..\Task\Test_Task-I.\RTE\_Robot_chassis_test3-IF:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IF:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F427xx -DUSE_HAL_DRIVER -DSTM32F427xx -DUSE_HAL_DRIVER -DUSE_STDPERIPH_DRIVER -DARM_MATH_CM4 -D__CC_ARM -DARM_MATH_M -D_GUNC_-o robot_chassis_test3\bsp_can.o --omf_browse robot_chassis_test3\bsp_can.crf --depend robot_chassis_test3\bsp_can.d)
-I (..\Hardware\Bsp-can\bsp_can.h)(0x5DD3F544)
+F (..\Hardware\Bsp-can\bsp_can.c)(0x5DD63BF4)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ..\Drivers\CMSIS\Lib\ARM -I ..\DSB_LIB -I ..\DSB_LIB\Include -I ..\APP\User_lib -I ..\APP\robomaster_vcan -I ..\APP\chassis_behaviour -I ..\APP\Gimbal_behaviour -I ..\Hardware\Bsp-can -I ..\Hardware\DJI_Remote -I ..\Hardware\oled -I ..\Hardware\IMU -I ..\Task\Initial_Task -I ..\Task\Chassis_Task -I ..\Task\Gimbal_Task -I ..\Task\Revolver_Task -I ..\Task\Test_Task-I.\RTE\_Robot_chassis_test3-IF:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IF:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F427xx -DUSE_HAL_DRIVER -DSTM32F427xx -DUSE_HAL_DRIVER -DUSE_STDPERIPH_DRIVER -DARM_MATH_CM4 -D__CC_ARM -DARM_MATH_M -D_GUNC_-o robot_chassis_test3\bsp_can.o --omf_browse robot_chassis_test3\bsp_can.crf --depend robot_chassis_test3\bsp_can.d)
+I (..\Hardware\Bsp-can\bsp_can.h)(0x5DD64B28)
 I (../Inc/can.h)(0x5DC69DCE)
 I (../Inc/main.h)(0x5DC95409)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x5DB0FACC)
@@ -1808,7 +1808,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x5DB0FACC)
 I (..\Hardware\DJI_Remote\dji_remote.h)(0x5DC66082)
 I (../Inc/usart.h)(0x5DC69DD0)
 I (..\APP\robomaster_vcan\robomaster_vcan.h)(0x5CA86BED)
-I (..\Hardware\Bsp-can\bsp_can.h)(0x5DD3F544)
+I (..\Hardware\Bsp-can\bsp_can.h)(0x5DD64B28)
 I (../Inc/can.h)(0x5DC69DCE)
 I (F:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x588B8344)
 I (../Inc/tim.h)(0x5DC69DD0)
@@ -1852,7 +1852,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x5DB0FACC)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x5DB0FACC)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x5DB0FACC)
 I (..\APP\robomaster_vcan\robomaster_vcan.h)(0x5CA86BED)
-I (..\Hardware\Bsp-can\bsp_can.h)(0x5DD3F544)
+I (..\Hardware\Bsp-can\bsp_can.h)(0x5DD64B28)
 I (../Inc/can.h)(0x5DC69DCE)
 I (F:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x588B8344)
 I (../Inc/tim.h)(0x5DC69DD0)
@@ -1903,7 +1903,7 @@ I (../Inc/main.h)(0x5DC95409)
 I (..\Hardware\DJI_Remote\dji_remote.h)(0x5DC66082)
 I (../Inc/usart.h)(0x5DC69DD0)
 I (..\APP\robomaster_vcan\robomaster_vcan.h)(0x5CA86BED)
-I (..\Hardware\Bsp-can\bsp_can.h)(0x5DD3F544)
+I (..\Hardware\Bsp-can\bsp_can.h)(0x5DD64B28)
 I (../Inc/can.h)(0x5DC69DCE)
 I (F:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x588B8344)
 I (../Inc/tim.h)(0x5DC69DD0)
@@ -1957,7 +1957,7 @@ I (../Inc/main.h)(0x5DC95409)
 I (..\Hardware\DJI_Remote\dji_remote.h)(0x5DC66082)
 I (../Inc/usart.h)(0x5DC69DD0)
 I (..\APP\robomaster_vcan\robomaster_vcan.h)(0x5CA86BED)
-I (..\Hardware\Bsp-can\bsp_can.h)(0x5DD3F544)
+I (..\Hardware\Bsp-can\bsp_can.h)(0x5DD64B28)
 I (../Inc/can.h)(0x5DC69DCE)
 I (F:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x588B8344)
 I (../Inc/tim.h)(0x5DC69DD0)
