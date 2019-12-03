@@ -102,7 +102,7 @@ void chassis_behaviour_mode_set(chassis_move_t *chassis_move_mode)
     //遥控器设置行为模式为 左边开关 的三档模式
     if (switch_is_mid(chassis_move_mode->chassis_RC->switch_left))//底盘不跟随yaw
     {
-        chassis_behaviour_mode = CHASSIS_NO_FOLLOW_YAW;
+        chassis_behaviour_mode = CHASSIS_INFANTRY_FOLLOW_GIMBAL_YAW;
     }
     else if (switch_is_down(chassis_move_mode->chassis_RC->switch_left))//底盘无力
     {
@@ -110,7 +110,7 @@ void chassis_behaviour_mode_set(chassis_move_t *chassis_move_mode)
     }
     else if (switch_is_up(chassis_move_mode->chassis_RC->switch_left))//跟随云台模式
     {
-        chassis_behaviour_mode = CHASSIS_INFANTRY_FOLLOW_GIMBAL_YAW;
+        chassis_behaviour_mode = CHASSIS_NO_FOLLOW_YAW;
     }
 //暂无云台
 //    //云台进入某些状态的时候，底盘保持不动 

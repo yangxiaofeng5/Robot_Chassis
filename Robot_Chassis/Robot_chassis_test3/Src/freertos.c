@@ -35,8 +35,8 @@
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
-#define SYSTEM_TEST 1 			//测试程序，用来测试各个模块的状态通过0 1来控制
-#define SYSTEM_PROTCET 0		//保护程序开启控制0 1控制
+#define SYSTEM_TEST 0 			//测试程序，用来测试各个模块的状态通过0 1来控制
+#define SYSTEM_PROTCET 1		//保护程序开启控制0 1控制
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/

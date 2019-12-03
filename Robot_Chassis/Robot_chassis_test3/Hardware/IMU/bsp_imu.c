@@ -16,15 +16,22 @@
 #include "mpu6500_reg.h"
 #include "spi.h"
 
+#include "robomaster_filter.h"
+
 #include "tim.h"		//mpu6500温度控制需要其中的 MPU6500_PWM_TEMPERATURE_SET 语句
 
 #define BOARD_DOWN (1)   
 #define IST8310
-#define MPU_TEMP_CONTROL 1 //启用陀螺仪温漂控制
+#define MPU_TEMP_CONTROL 1 												//启用陀螺仪温漂控制
+#define BUTTEREORTH_FILTER 1											//启用陀螺仪的滤波程序
 #define MPU_HSPI hspi5
 #define MPU_NSS_LOW HAL_GPIO_WritePin(GPIOF, GPIO_PIN_6, GPIO_PIN_RESET)
 #define MPU_NSS_HIGH HAL_GPIO_WritePin(GPIOF, GPIO_PIN_6, GPIO_PIN_SET)
-
+float X_g_av,Y_g_av,Z_g_av;												//可用的加速度计值
+float X_g_av_bpf,Y_g_av_bpf,Z_g_av_bpf;						//带阻滤波后可用的加速度计值
+float X_w_av,Y_w_av,Z_w_av;												//可用的陀螺仪数值
+float X_w_av_bpf,Y_w_av_bpf,Z_w_av_bpf;						//带阻滤波后可用的陀螺仪数值
+float X_m_av,Y_m_av,Z_m_av;												//经过滤波后的磁力计读数
 #define Kp 2.0f                                              /* 
                                                               * proportional gain governs rate of 
                                                               * convergence to accelerometer/magnetometer 
@@ -331,18 +338,57 @@ void mpu_get_data()
     memcpy(&imu.ax, &mpu_data.ax, 6 * sizeof(int16_t));
 	
     imu.temp = 21 + mpu_data.temp / 333.87f;
-	  /* 2000dps -> rad/s */
+	
+	#if BUTTEREORTH_FILTER
+	/*******************板载imu 陀螺仪滤波 *******************/
+		imu.X_w_av_bpf=Butterworth_Filter(mpu_data.gx,&Gyro_BufferData_BPF[0],&Bandstop_Filter_Parameter_30_98);
+		imu.Y_w_av_bpf=Butterworth_Filter(mpu_data.gy,&Gyro_BufferData_BPF[1],&Bandstop_Filter_Parameter_30_98);
+		imu.Z_w_av_bpf=Butterworth_Filter(mpu_data.gz,&Gyro_BufferData_BPF[2],&Bandstop_Filter_Parameter_30_98);
+		
+		imu.X_w_av=Butterworth_Filter(imu.X_w_av_bpf,&Gyro_BufferData[0],&Gyro_Parameter);
+		imu.Y_w_av=Butterworth_Filter(imu.Y_w_av_bpf,&Gyro_BufferData[1],&Gyro_Parameter);
+		imu.Z_w_av=Butterworth_Filter(imu.Z_w_av_bpf,&Gyro_BufferData[2],&Gyro_Parameter);  
+		
+		/*******************板载imu 加速度计滤波 *******************/
+		imu.X_g_av_bpf=Butterworth_Filter(imu.ax,&Accel_BufferData_BPF[0],&Bandstop_Filter_Parameter_30_94);
+    imu.Y_g_av_bpf=Butterworth_Filter(imu.ay,&Accel_BufferData_BPF[1],&Bandstop_Filter_Parameter_30_94);
+    imu.Z_g_av_bpf=Butterworth_Filter(imu.az,&Accel_BufferData_BPF[2],&Bandstop_Filter_Parameter_30_94);
+		
+		//imu.Y_g_av_bpf=Butterworth_Filter(imu.ay,&Accel_BufferData_BPF[1],&Butter_30HZ_Parameter_Acce);
+		
+		imu.X_g_av=Butterworth_Filter(imu.X_g_av_bpf,&Accel_BufferData[0],&Accel_Parameter);
+		imu.Y_g_av=Butterworth_Filter(imu.Y_g_av_bpf,&Accel_BufferData[1],&Accel_Parameter);
+		imu.Z_g_av=Butterworth_Filter(imu.Z_g_av_bpf,&Accel_BufferData[2],&Accel_Parameter);
+		
+		 /* 2000dps -> rad/s */  //弧度制
+		imu.wx   = imu.X_w_av / 16.384f / 57.3f; 
+    imu.wy   = imu.Y_w_av / 16.384f / 57.3f; 
+    imu.wz   = imu.Z_w_av / 16.384f / 57.3f;
+		/* 2000dps -> rad/s */  //角度制
+		imu.gx   = imu.X_w_av / 16.384f; 
+    imu.gy   = imu.Y_w_av / 16.384f; 
+    imu.gz   = imu.Z_w_av / 16.384f;
+		#else
+		/* 2000dps -> rad/s */
 	  imu.wx   = mpu_data.gx / 16.384f / 57.3f; 
     imu.wy   = mpu_data.gy / 16.384f / 57.3f; 
     imu.wz   = mpu_data.gz / 16.384f / 57.3f;
+		#endif
 		
 		MPU_Transfer();
 		
 		#if MPU_TEMP_CONTROL
-		if(imu.temp >= 50||imu.temp <= 55)  //陀螺仪温度控制
-			MPU6500_PWM_TEMPERATURE_SET(0);
+		if(imu.temp >= 34)  //陀螺仪温度控制
+		{
+//			MPU6500_PWM_TEMPERATURE_SET(0);
+			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_5, GPIO_PIN_RESET);
+			printf("Heating is finished!");
+		}
 		else
-			MPU6500_PWM_TEMPERATURE_SET(4000);
+		{
+//			MPU6500_PWM_TEMPERATURE_SET(4000);
+			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_5, GPIO_PIN_SET);
+		}
 		#endif
 }
 

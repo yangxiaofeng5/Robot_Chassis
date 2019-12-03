@@ -61,6 +61,8 @@ robot_chassis_test3\initial_task.o: ../Inc/tim.h
 robot_chassis_test3\initial_task.o: ../Inc/usart.h
 robot_chassis_test3\initial_task.o: ..\Hardware\Bsp-can\pid.h
 robot_chassis_test3\initial_task.o: ..\APP\User_lib\user_lib.h
+robot_chassis_test3\initial_task.o: ..\Task\Gimbal_Task\Gimbal_Task1.h
+robot_chassis_test3\initial_task.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h
 robot_chassis_test3\initial_task.o: ..\Hardware\oled\oled.h
 robot_chassis_test3\initial_task.o: ../Inc/spi.h
 robot_chassis_test3\initial_task.o: ..\Hardware\IMU\bsp_imu.h

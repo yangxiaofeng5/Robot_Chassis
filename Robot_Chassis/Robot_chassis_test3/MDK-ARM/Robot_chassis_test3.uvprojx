@@ -336,7 +336,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER,STM32F427xx,USE_HAL_DRIVER,USE_STDPERIPH_DRIVER,ARM_MATH_CM4,__CC_ARM,ARM_MATH_M,_GUNC_</Define>
               <Undefine></Undefine>
-              <IncludePath>../Inc;../Drivers/STM32F4xx_HAL_Driver/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy;../Middlewares/Third_Party/FreeRTOS/Source/include;../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS;../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F;../Drivers/CMSIS/Device/ST/STM32F4xx/Include;../Drivers/CMSIS/Include;..\Drivers\CMSIS\Lib\ARM;..\DSB_LIB;..\DSB_LIB\Include;..\APP\User_lib;..\APP\robomaster_vcan;..\APP\chassis_behaviour;..\APP\Gimbal_behaviour;..\Hardware\Bsp-can;..\Hardware\DJI_Remote;..\Hardware\oled;..\Hardware\IMU;..\Task\Initial_Task;..\Task\Chassis_Task;..\Task\Gimbal_Task;..\Task\Revolver_Task;..\Task\Test_Task</IncludePath>
+              <IncludePath>../Inc;../Drivers/STM32F4xx_HAL_Driver/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy;../Middlewares/Third_Party/FreeRTOS/Source/include;../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS;../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F;../Drivers/CMSIS/Device/ST/STM32F4xx/Include;../Drivers/CMSIS/Include;..\Drivers\CMSIS\Lib\ARM;..\DSB_LIB;..\DSB_LIB\Include;..\APP\User_lib;..\APP\robomaster_vcan;..\APP\chassis_behaviour;..\APP\Gimbal_behaviour;..\APP\robomaster_filter;..\Hardware\Bsp-can;..\Hardware\DJI_Remote;..\Hardware\oled;..\Hardware\IMU;..\Task\Initial_Task;..\Task\Chassis_Task;..\Task\Gimbal_Task;..\Task\Revolver_Task;..\Task\Test_Task;..\APP\Robot_Status</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -651,9 +651,9 @@
               <FilePath>..\Task\Test_Task\Test_Task.c</FilePath>
             </File>
             <File>
-              <FileName>Gimbal_Task.c</FileName>
+              <FileName>Gimbal_Task1.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Task\Gimbal_Task\Gimbal_Task.c</FilePath>
+              <FilePath>..\Task\Gimbal_Task\Gimbal_Task1.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -676,9 +676,14 @@
               <FilePath>..\APP\chassis_behaviour\chassis_behaviour.c</FilePath>
             </File>
             <File>
-              <FileName>Gimbal_behaviour.c</FileName>
+              <FileName>robomaster_filter.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\APP\Gimbal_behaviour\Gimbal_behaviour.c</FilePath>
+              <FilePath>..\APP\robomaster_filter\robomaster_filter.c</FilePath>
+            </File>
+            <File>
+              <FileName>Robot_Status.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\APP\Robot_Status\Robot_Status.h</FilePath>
             </File>
           </Files>
         </Group>

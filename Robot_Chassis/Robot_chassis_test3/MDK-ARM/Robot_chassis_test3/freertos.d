@@ -61,3 +61,5 @@ robot_chassis_test3\freertos.o: ..\Task\Chassis_Task\Chassis_Task.h
 robot_chassis_test3\freertos.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h
 robot_chassis_test3\freertos.o: ..\Hardware\Bsp-can\pid.h
 robot_chassis_test3\freertos.o: ..\APP\User_lib\user_lib.h
+robot_chassis_test3\freertos.o: ..\Task\Gimbal_Task\Gimbal_Task1.h
+robot_chassis_test3\freertos.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h

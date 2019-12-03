@@ -51,3 +51,4 @@ robot_chassis_test3\bsp_imu.o: ..\Hardware\Bsp-can\bsp_can.h
 robot_chassis_test3\bsp_imu.o: ../Inc/can.h
 robot_chassis_test3\bsp_imu.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 robot_chassis_test3\bsp_imu.o: ../Inc/tim.h
+robot_chassis_test3\bsp_imu.o: ..\APP\robomaster_filter\robomaster_filter.h

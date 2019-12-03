@@ -59,6 +59,8 @@ robot_chassis_test3\chassis_behaviour.o: ../Middlewares/Third_Party/FreeRTOS/Sou
 robot_chassis_test3\chassis_behaviour.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h
 robot_chassis_test3\chassis_behaviour.o: ..\Hardware\Bsp-can\pid.h
 robot_chassis_test3\chassis_behaviour.o: ..\APP\User_lib\user_lib.h
+robot_chassis_test3\chassis_behaviour.o: ..\Task\Gimbal_Task\Gimbal_Task1.h
+robot_chassis_test3\chassis_behaviour.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h
 robot_chassis_test3\chassis_behaviour.o: ..\DSB_LIB\Include\arm_math.h
 robot_chassis_test3\chassis_behaviour.o: ../Drivers/CMSIS/Include/core_cm4.h
 robot_chassis_test3\chassis_behaviour.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h

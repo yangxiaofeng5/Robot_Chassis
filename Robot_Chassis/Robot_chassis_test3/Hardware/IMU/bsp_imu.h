@@ -16,7 +16,11 @@
 #define MPU_DELAY(x) HAL_Delay(x)
 
 //获取姿态角指针地址后，对应姿态角的地址偏移量 fp32类型
-//融合了官方程序需要的东西，这里对应发地址偏移量
+//这里对应发地址偏移量
+
+/***********************************************START***********************************************/
+/*功能代码名称：对应姿态角的地址偏移量*/
+//需根据板子安装实际情况来设置
 #define INS_YAW_ADDRESS_OFFSET 0
 #define INS_PITCH_ADDRESS_OFFSET 1
 #define INS_ROLL_ADDRESS_OFFSET 2
@@ -28,6 +32,8 @@
 #define INS_ACCEL_X_ADDRESS_OFFSET 0
 #define INS_ACCEL_Y_ADDRESS_OFFSET 1
 #define INS_ACCEL_Z_ADDRESS_OFFSET 2
+/***********************************************END***************************************************/
+
 
 typedef struct
 {
@@ -73,10 +79,32 @@ typedef struct
 	float vx;
 	float vy;
 	float vz;
+	
+	float gx;//角速度  角度制 原始数据
+	float gy;
+	float gz;
 
 	float rol;
 	float pit;
 	float yaw;
+	
+	float X_g_av_bpf;//带阻滤波后可用的加速度计值
+	float Y_g_av_bpf;
+	float Z_g_av_bpf;
+	float X_g_av;//可用的加速度计值
+	float Y_g_av;
+	float Z_g_av;
+	
+	float X_w_av_bpf;//带阻滤波后可用的陀螺仪数值
+	float Y_w_av_bpf;
+	float Z_w_av_bpf;
+	float X_w_av;//可用的陀螺仪数值
+	float Y_w_av;
+	float Z_w_av;
+	
+	float X_m_av;//经过滤波后的磁力计读数
+	float Y_m_av;
+	float Z_m_av;
 } imu_t;
 
 extern mpu_data_t mpu_data;

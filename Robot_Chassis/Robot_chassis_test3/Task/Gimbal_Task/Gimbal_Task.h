@@ -24,27 +24,26 @@
 //电机码盘值最大以及中值
 #define Half_ecd_range 4096
 #define ecd_range 8191
+
 //云台电机的最初角度
-#define YAW_OFFEST 0				//YAW轴中值     单位都为rad
-#define PITCH_OFFEST 0			//pitch轴中值
-#define YAW_MAX_ANGLE 0			//最大最小值
-#define YAW_MIN_ANGLE 0
-#define PITCH_MAX_ANGLE 0
-#define PITCH_MIN_ANGLE 0
-
-
+#define YAW_ENCODE_OFFEST 			4766.0f			//YAW轴机械中值 
+#define PITCH_ENCODE_OFFEST 		1120.0f			//pitch轴机械中值
+#define YAW_MAX_ENCODE_ANGLE 		3828.0f							//机械最大最小值
+#define YAW_MIN_ENCODE_ANGLE 		5720.0f
+#define PITCH_MAX_ENCODE_ANGLE 	41.0f
+#define PITCH_MIN_ENCODE_ANGLE 	2150.0f
 
 	 
 //pitch 速度环 PID参数以及 PID最大输出，积分输出
-#define PITCH_SPEED_PID_KP 2000.0f
-#define PITCH_SPEED_PID_KI 20.0f
+#define PITCH_SPEED_PID_KP 1220.0f//2000.0f
+#define PITCH_SPEED_PID_KI 0.0f//20.0f
 #define PITCH_SPEED_PID_KD 0.0f
-#define PITCH_SPEED_PID_MAX_OUT 30000.0f
+#define PITCH_SPEED_PID_MAX_OUT 30000.f//30000.0f
 #define PITCH_SPEED_PID_MAX_IOUT 5000.0f
 
 //yaw 速度环 PID参数以及 PID最大输出，积分输出
-#define YAW_SPEED_PID_KP 2200.0f
-#define YAW_SPEED_PID_KI 20.0f
+#define YAW_SPEED_PID_KP 1000.0f
+#define YAW_SPEED_PID_KI 0.0f//20.0f
 #define YAW_SPEED_PID_KD 0.0f
 #define YAW_SPEED_PID_MAX_OUT 30000.0f
 #define YAW_SPEED_PID_MAX_IOUT 5000.0f
@@ -97,18 +96,18 @@
 #define INIT_YAW_SET 0.0f
 #define INIT_PITCH_SET 0.0f
 	 
-//云台校准中值的时候，发送原始电流值，以及堵转时间，通过陀螺仪判断堵转
-#define GIMBAL_CALI_MOTOR_SET 8000
-#define GIMBAL_CALI_STEP_TIME 2000
-#define GIMBAL_CALI_GYRO_LIMIT 0.1f
+////云台校准中值的时候，发送原始电流值，以及堵转时间，通过陀螺仪判断堵转
+//#define GIMBAL_CALI_MOTOR_SET 8000
+//#define GIMBAL_CALI_STEP_TIME 2000
+//#define GIMBAL_CALI_GYRO_LIMIT 0.1f
 
-#define GIMBAL_CALI_PITCH_MAX_STEP 1
-#define GIMBAL_CALI_PITCH_MIN_STEP 2
-#define GIMBAL_CALI_YAW_MAX_STEP 3
-#define GIMBAL_CALI_YAW_MIN_STEP 4
+//#define GIMBAL_CALI_PITCH_MAX_STEP 1
+//#define GIMBAL_CALI_PITCH_MIN_STEP 2
+//#define GIMBAL_CALI_YAW_MAX_STEP 3
+//#define GIMBAL_CALI_YAW_MIN_STEP 4
 
-#define GIMBAL_CALI_START_STEP GIMBAL_CALI_PITCH_MAX_STEP
-#define GIMBAL_CALI_END_STEP 5
+//#define GIMBAL_CALI_START_STEP GIMBAL_CALI_PITCH_MAX_STEP
+//#define GIMBAL_CALI_END_STEP 5
 
 //遥控器输入死区，因为遥控器存在差异，摇杆在中间，其值不一定为零
 #define RC_deadband 10
@@ -125,7 +124,7 @@
 
 //电机编码值转化成角度值
 #ifndef Motor_Ecd_to_Rad
-#define Motor_Ecd_to_Rad 0.000766990394f //      2*  PI  /8192
+#define Motor_Ecd_to_Rad 0.000766990394f //      2*  PI  /8192弧度制
 #endif
 	 
 typedef enum
@@ -204,7 +203,7 @@ typedef struct
     uint16_t max_pitch_ecd;
     uint16_t min_pitch_ecd;
     uint8_t step;
-		gimbal_cali_t *local_cali_t;
+		//gimbal_cali_t local_cali_t;
 } Gimbal_Cali_t;
 
 typedef struct

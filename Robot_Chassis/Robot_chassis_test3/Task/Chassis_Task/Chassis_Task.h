@@ -14,6 +14,7 @@
 //#include "oledfont.h"	
 #include "pid.h"
 #include "user_lib.h"
+#include "Gimbal_Task1.h"
 	 
 	 
 //任务开始空闲一段时间
@@ -101,17 +102,11 @@ extern pid_struct_t motor_pid[7];
 /*****底盘运动状态的所有模式标签*****/
 typedef enum
 {
-  CHASSIS_VECTOR_FOLLOW_GIMBAL_YAW,
-  CHASSIS_VECTOR_FOLLOW_CHASSIS_YAW,
-  CHASSIS_VECTOR_NO_FOLLOW_YAW,//底盘不跟随云台
-	CHASSIS_VECTOR_SMALL_TOP_YAW,//小陀螺标签
-  CHASSIS_VECTOR_RAW,
-
-  //  CHASSIS_AUTO,
-  //  CHASSIS_FOLLOW_YAW,
-  //  CHASSIS_ENCODER,
-  //  CHASSIS_NO_ACTION,
-  //  CHASSIS_RELAX,
+  CHASSIS_VECTOR_FOLLOW_GIMBAL_YAW,	//底盘跟随云台
+  CHASSIS_VECTOR_FOLLOW_CHASSIS_YAW,//空置中
+  CHASSIS_VECTOR_NO_FOLLOW_YAW,			//底盘不跟随云台
+	CHASSIS_VECTOR_SMALL_TOP_YAW,			//小陀螺标签
+  CHASSIS_VECTOR_RAW,								//空置中
 } chassis_mode_e;
 
 typedef struct
@@ -128,9 +123,9 @@ typedef struct
 typedef struct
 {
   const RC_Type *chassis_RC;               //底盘使用的遥控器指针
-//  const Gimbal_Motor_t *chassis_yaw_motor;   //底盘使用到yaw云台电机的相对角度来计算底盘的欧拉角
-//  const Gimbal_Motor_t *chassis_pitch_motor; //底盘使用到pitch云台电机的相对角度来计算底盘的欧拉角
-//  const fp32 *chassis_INS_angle;             //获取陀螺仪解算出的欧拉角指针
+  const Gimbal_Motor_t *chassis_yaw_motor;   //底盘使用到yaw云台电机的相对角度来计算底盘的欧拉角
+  const Gimbal_Motor_t *chassis_pitch_motor; //底盘使用到pitch云台电机的相对角度来计算底盘的欧拉角
+  const fp32 *chassis_INS_angle;             //获取陀螺仪解算出的欧拉角指针
   chassis_mode_e chassis_mode;               //底盘控制状态机
   chassis_mode_e last_chassis_mode;          //底盘上次控制状态机
   

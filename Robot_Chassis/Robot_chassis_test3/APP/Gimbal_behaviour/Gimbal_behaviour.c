@@ -307,17 +307,18 @@ static void gimbal_behavour_set(Gimbal_Control_t *gimbal_mode_set)
     {
         return;
     }
-//    //校准行为，return 不会设置其他的模式
-//    if (gimbal_behaviour_mode == GIMBAL_CALI && gimbal_mode_set->gimbal_cali.step != GIMBAL_CALI_END_STEP)
-//    {
-//        return;
-//    }
+/*
+    //校准行为，return 不会设置其他的模式
+    if (gimbal_behaviour_mode == GIMBAL_CALI && gimbal_mode_set->gimbal_cali.step != GIMBAL_CALI_END_STEP)
+    {
+        return;
+    }
     //如果外部使得校准步骤从0 变成 start，则进入校准模式
-//    if (gimbal_mode_set->gimbal_cali.step == GIMBAL_CALI_START_STEP)
-//    {
-//        gimbal_behaviour_mode = GIMBAL_CALI;
-//        return;
-//    }
+    if (gimbal_mode_set->gimbal_cali.step == GIMBAL_CALI_START_STEP)
+    {
+        gimbal_behaviour_mode = GIMBAL_CALI;
+        return;
+    }
 
     //初始化模式判断是否到达中值位置
     if (gimbal_behaviour_mode == GIMBAL_INIT)
@@ -343,10 +344,9 @@ static void gimbal_behavour_set(Gimbal_Control_t *gimbal_mode_set)
                 init_time++;
             }
         }
-
         //超过初始化最大时间，或者已经稳定到中值一段时间，退出初始化状态开关打下档，或者掉线
         if (init_time < GIMBAL_INIT_TIME && init_stop_time < GIMBAL_INIT_STOP_TIME &&
-            !switch_is_down(gimbal_mode_set->gimbal_rc_ctrl->switch_left)/* && !toe_is_error(DBUSTOE)*/)//暂无遥控掉线报警
+            !switch_is_down(gimbal_mode_set->gimbal_rc_ctrl->switch_left) //&& !toe_is_error(DBUSTOE))//暂无遥控掉线报警
         {
             return;
         }
@@ -356,7 +356,7 @@ static void gimbal_behavour_set(Gimbal_Control_t *gimbal_mode_set)
             init_time = 0;
         }
     }
-
+*/
     //开关控制 云台状态
     if (switch_is_down(gimbal_mode_set->gimbal_rc_ctrl->switch_left))
     {
@@ -368,7 +368,7 @@ static void gimbal_behavour_set(Gimbal_Control_t *gimbal_mode_set)
     }
     else if (switch_is_up(gimbal_mode_set->gimbal_rc_ctrl->switch_left))
     {
-//        gimbal_behaviour_mode = GIMBAL_ABSOLUTE_ANGLE;
+        gimbal_behaviour_mode = GIMBAL_ABSOLUTE_ANGLE;
     }
 
 //    if( toe_is_error(DBUSTOE))

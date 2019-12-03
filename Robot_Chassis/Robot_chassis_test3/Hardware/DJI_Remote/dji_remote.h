@@ -33,6 +33,22 @@
 #define KEY_PRESSED_OFFSET_V ((uint16_t)1 << 14)
 #define KEY_PRESSED_OFFSET_B ((uint16_t)1 << 15)
 	 
+
+/***********************************************START***********************************************/
+/*功能代码名称：遥控器死区限制，底盘云台都要用到*/
+		
+#define rc_deadline_limit(input, output, dealine)        \
+    {                                                    \
+        if ((input) > (dealine) || (input) < -(dealine)) \
+        {                                                \
+            (output) = (input);                          \
+        }                                                \
+        else                                             \
+        {                                                \
+            (output) = 0;                                \
+        }                                                \
+    }
+/***********************************************END***************************************************/		
 /**********************接收机需要的结构体***********************/
 typedef struct {
 	int16_t ch1;	//each ch value from -364 -- +364

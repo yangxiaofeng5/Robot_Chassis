@@ -1,14 +1,15 @@
 #include "Test_Task.h"
 
 #include "bsp_imu.h"
-
 #include "bsp_can.h"
 #include "pid.h"
+#include "user_lib.h"
 
 #define SYSTEM_INFORMATION_CALLBACK 0 //任务运行时间信息统计显示，通过0.1来使用
-#define MOTOR_TEST 1									//电机测试代码
-#define MPU6500_TSES 0								//陀螺仪测试代码
-
+#define MOTOR_TEST 0									//电机测试代码
+#define MPU6500_TEST 1								//陀螺仪测试代码
+#define DJI_REMOTE_TEST 0									//遥控器测试代码
+#define PI 3.1415926f
 //#define Pitch_RC_SENABE -0.000006f    //遥控器系数
 //#define Motor_Ecd_to_Rad 0.000766990394f //      2*  PI  /8192
 
@@ -33,7 +34,7 @@ void Test_Task(void const * argument)
 	for (uint8_t i = 0; i < 4; i++)
   {
     pid_init(&motor_angle_pid[i], 15.0f, 0, 0, 0.0f, 10.0f); 
-		pid_init(&motor_speed_pid[i], 1220.0f, 30.0f, 0, 5000.0f, 30000.0f); 
+		pid_init(&motor_speed_pid[i], 1220.0f, 00.0f, 0, 5000.0f, 30000.0f); 
   }
 	osDelay(300);
 	MPU6500_INITIAL();
@@ -56,9 +57,9 @@ void Test_Task(void const * argument)
 		//电机检验代码
 		#if MOTOR_TEST
 		MPU6500_GET_DATA();
-		target_speed1 = remote_control.ch4*0.0088228f;
+		target_speed1 = remote_control.ch4*0.0088228f;//150/660
 		target_speed2 = remote_control.ch3*0.0088228f;
-		if(remote_control .switch_left == 2)
+		if(remote_control.switch_left == 2)
 		{
 						set_motor_voltage(0, 													//设置电机速度
 													0, 
@@ -78,10 +79,6 @@ void Test_Task(void const * argument)
 				motor_info[4].set_voltage = (int16_t)pid_calc(&motor_speed_pid[4], 
 																						target_speed1,
 																						imu.wx);
-//				else
-//				motor_info[4].set_voltage = (int16_t)pid_calc(&motor_angle_pid[4], 
-//																						-(motor_info[4].rotor_angle-2000)/0.04416, 
-//																						-imu.rol);
 			
 //				motor_info[1].set_voltage = (int16_t)pid_calc(&motor_speed_pid[1], 
 //																						target_speed2,
@@ -96,30 +93,42 @@ void Test_Task(void const * argument)
 
 
 			wave_form_data[0] = motor_info[4].rotor_angle*100;
-			wave_form_data[1] = motor_info[4].torque_current;
-			wave_form_data[2] = -motor_info[4].rotor_speed;
+			wave_form_data[1] = target_speed1*1000.0f;
+			wave_form_data[2] = -motor_info[4].set_voltage;
 			wave_form_data[3] = -imu.rol*1000;
 			shanwai_send_wave_form();
 		}
     osDelay(10);
 		#endif
 		
-		#if MPU6500_TSES
+		#if MPU6500_TEST
 		MPU6500_GET_DATA();
 		
-		wave_form_data[0] = imu.pit*1000;
-    wave_form_data[1] = imu.yaw*1000;		//左右
-		wave_form_data[2] = imu.rol*1000;		//前后
+		wave_form_data[0] = imu.pit;
+    wave_form_data[1] = imu.yaw;		//左右
+		wave_form_data[2] = imu.rol;		//前后
 		wave_form_data[3] = imu.temp;
-//		
-//		wave_form_data[4] = imu.pit;
-//    wave_form_data[5] = imu.pit;
-//		wave_form_data[6] = imu.pit;
+		
+		wave_form_data[4] = imu.wx;
+    wave_form_data[5] = imu.wy;
+		wave_form_data[6] = imu.wz;
 		
 		shanwai_send_wave_form();
     osDelay(10);
 		
 		#endif
+		#if DJI_REMOTE_TEST 
+		wave_form_data[0] = remote_control.ch1;
+    wave_form_data[1] = remote_control.ch2;		//左右
+		wave_form_data[2] = remote_control.ch3;		//前后
+		wave_form_data[3] = remote_control.ch4;	
+		wave_form_data[4] = remote_control.switch_left;
+    wave_form_data[5] = remote_control.switch_right;
+//		wave_form_data[6] = imu.pit;
+		
+		shanwai_send_wave_form();
+		#endif
+		
 		
   }
 
